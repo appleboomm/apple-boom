@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="theme-color" content="#080A07"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apple Boom</title>
+<style>
+:root{--bg:#F5F5F2;--sage:#E1E4DB;--olive:#7C8773;--ink:#1D211C;--card:#FFFFFF;--ac:#8FAE86;--ac2:#5F7F59;--sh:0 10px 40px rgba(40,50,36,.08);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D100C;--sage:#232920;--olive:#9AA591;--ink:#F2F3EE;--card:#161A14;--sh:0 10px 40px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0D100C;--sage:#232920;--olive:#9AA591;--ink:#F2F3EE;--card:#161A14;--sh:0 10px 40px rgba(0,0,0,.4);color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "SF Pro Display",-apple-system,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}a{color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--sage);display:flex;gap:8px;align-items:center;padding:10px 16px;flex-wrap:wrap}
+.logo{font-weight:700;font-size:20px;letter-spacing:-.6px;cursor:pointer}.logo span{background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.search{flex:1;min-width:130px;border:1px solid var(--sage);background:var(--card);border-radius:99px;padding:9px 16px;outline:0;transition:.2s}.search:focus{border-color:var(--ac);box-shadow:0 0 0 4px color-mix(in srgb,var(--ac) 25%,transparent)}
+.btn{border:1px solid color-mix(in srgb,var(--ink) 25%,transparent);background:none;border-radius:99px;padding:8px 16px;cursor:pointer;transition:.25s;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--sage)}.btn.p{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#0e130d;border:0;font-weight:600}.btn.p:hover{box-shadow:0 8px 28px color-mix(in srgb,var(--ac2) 55%,transparent);transform:translateY(-1px)}.btn.s{padding:4px 11px;font-size:13px}.btn.g{color:#F3F1EB;border-color:rgba(255,255,255,.35)}.btn.g:hover{background:rgba(255,255,255,.12)}
+nav{display:flex;gap:6px;width:100%;overflow-x:auto}nav a{cursor:pointer;padding:3px 10px;border-radius:99px;font-size:14px;white-space:nowrap;color:var(--olive);transition:.2s}nav a:hover{background:var(--sage);color:var(--ink)}
+.tk{overflow:hidden;background:var(--ink);color:var(--bg);font-size:13px;padding:7px 0;white-space:nowrap}.tk div{display:inline-block;animation:mq 28s linear infinite}.tk span{margin:0 22px}@keyframes mq{to{transform:translateX(-50%)}}
+.wrap{max-width:1140px;margin:0 auto;padding:0 16px 80px}
+.hero{position:relative;overflow:hidden;margin:20px 0;padding:44px 28px;border-radius:32px;color:#F3F1EB;background:radial-gradient(circle at 80% 20%,#3d5236 0,transparent 55%),linear-gradient(160deg,#0f140e,#1d2619 60%,#2c3828)}
+.hero.big{display:grid;grid-template-columns:1fr;gap:10px;align-items:center;min-height:460px}@media(min-width:760px){.hero.big{grid-template-columns:1.1fr .9fr;padding:64px 56px}}
+.hero h1{font-size:clamp(36px,7vw,68px);line-height:1.02;margin:6px 0 14px;letter-spacing:-2px}.hero h1 em{font-style:normal;background:linear-gradient(90deg,#CFE3B8,#8FAE86);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:440px;margin:0 0 22px;opacity:.78}.eb{font-size:13px;letter-spacing:2px;text-transform:uppercase;opacity:.6}
+.hv{animation:fl 6s ease-in-out infinite;filter:drop-shadow(0 30px 40px rgba(0,0,0,.5))}.hv .bg{display:none}@keyframes fl{50%{transform:translateY(-12px) rotate(1.5deg)}}
+.hero:before{content:"";position:absolute;width:420px;height:420px;right:-120px;top:-120px;background:radial-gradient(circle,rgba(143,174,134,.35),transparent 65%);animation:pu 7s ease-in-out infinite}@keyframes pu{50%{transform:scale(1.25)}}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none}
+.chip{white-space:nowrap;border:1px solid var(--sage);background:var(--card);border-radius:99px;padding:7px 15px;cursor:pointer;transition:.2s}.chip:hover{border-color:var(--ac)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+select,.f{border:1px solid var(--sage);background:var(--card);border-radius:14px;padding:8px 12px}.f{width:100%;margin:5px 0;padding:11px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.card{background:var(--card);border-radius:26px;padding:14px;cursor:pointer;transition:.35s cubic-bezier(.2,.8,.2,1);border:1px solid transparent;position:relative;box-shadow:var(--sh);opacity:0;transform:translateY(18px)}
+.card.in{opacity:1;transform:none}.card.in:hover{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 20px 50px color-mix(in srgb,var(--ac2) 28%,transparent)}
+.card h3{font-size:16px;margin:10px 0 2px;letter-spacing:-.2px}.card:hover .ph svg,.card:hover .ph img{transform:scale(1.06)}
+.ph{aspect-ratio:1;border-radius:18px;overflow:hidden;background:var(--bg)}.ph svg,.ph img,.sl svg,.sl img{width:100%;height:100%;object-fit:contain;display:block;transition:.5s}
+.sws{display:flex;gap:6px;margin:8px 0 2px;min-height:18px}.sws i{width:16px;height:16px;border-radius:50%;border:2px solid var(--card);box-shadow:0 0 0 1px var(--sage);cursor:pointer;transition:.2s}.sws i.on{box-shadow:0 0 0 2px var(--ink)}.sws i:hover{transform:scale(1.2)}
+.brand{font-size:12px;color:var(--olive);text-transform:uppercase;letter-spacing:1px}.price{font-weight:600}.old{text-decoration:line-through;color:var(--olive);font-weight:400;margin-left:6px}
+.tag{position:absolute;top:20px;left:20px;z-index:1;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#0e130d;font-size:11px;font-weight:600;padding:2px 10px;border-radius:99px}
+.heart{position:absolute;top:18px;right:18px;z-index:1;background:color-mix(in srgb,var(--card) 80%,transparent);backdrop-filter:blur(8px);border:0;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:17px;transition:.2s}.heart:hover{transform:scale(1.15)}
+.bento{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}@media(min-width:760px){.bento{grid-template-columns:repeat(4,1fr)}}
+.tile{background:var(--card);border-radius:28px;padding:18px;cursor:pointer;box-shadow:var(--sh);transition:.35s;overflow:hidden;position:relative}.tile:hover{transform:translateY(-5px)}.tile b{display:block;font-size:18px;letter-spacing:-.3px}.tile span{color:var(--olive);font-size:13px}.tile svg{width:100%;display:block;margin-top:4px;transition:.5s}.tile:hover svg{transform:scale(1.08) rotate(-2deg)}.tile .bg{display:none}
+.pg{display:grid;grid-template-columns:1fr;gap:26px;margin-top:20px}@media(min-width:760px){.pg{grid-template-columns:1.1fr .9fr}}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:30px;background:var(--card);scrollbar-width:none;box-shadow:var(--sh)}.gal::-webkit-scrollbar{display:none}
+.sl{flex:0 0 100%;aspect-ratio:1;scroll-snap-align:center;cursor:zoom-in}
+.th{display:flex;gap:8px;margin-top:10px}.th div{width:62px;height:62px;border-radius:14px;overflow:hidden;border:2px solid transparent;cursor:pointer;background:var(--card);transition:.2s}.th div.on{border-color:var(--ac2)}
+.opt{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.sw{width:34px;height:34px;border-radius:50%;border:2px solid var(--card);box-shadow:0 0 0 1px var(--sage);cursor:pointer;transition:.2s}.sw:hover{transform:scale(1.1)}.sw.on{box-shadow:0 0 0 2px var(--ink)}
+.ov{position:fixed;inset:0;background:rgba(10,12,9,.92);display:none;align-items:center;justify-content:center;z-index:30;padding:16px}.ov.on{display:flex}.ov>div{width:min(92vw,80vh);aspect-ratio:1;background:var(--bg);border-radius:28px;overflow:hidden}.ov svg,.ov img{width:100%;height:100%;object-fit:contain}
+table{width:100%;border-collapse:collapse}td{padding:9px 0;border-bottom:1px solid var(--sage);font-size:14px;vertical-align:top}td:first-child{color:var(--olive);width:42%}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--sage)}.row input[type=number]{width:60px;border:1px solid var(--sage);background:var(--card);border-radius:10px;padding:6px}
+.note{font-size:13px;color:var(--olive)}.sec{margin:44px 0 14px;font-size:clamp(24px,4vw,34px);letter-spacing:-1px;opacity:0;transform:translateY(14px);transition:.6s}.sec.in{opacity:1;transform:none}
+.adv{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}.adv div{background:var(--card);border-radius:26px;padding:22px;box-shadow:var(--sh);opacity:0;transition:.6s}.adv div.in{opacity:1}
+.fab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:15;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#0e130d;font-weight:600;padding:12px 20px;border-radius:99px;text-decoration:none;box-shadow:0 10px 30px rgba(60,90,55,.45);animation:pl 2.6s infinite}@keyframes pl{0%{box-shadow:0 0 0 0 rgba(143,174,134,.6)}70%{box-shadow:0 0 0 16px rgba(143,174,134,0)}100%{box-shadow:0 0 0 0 rgba(143,174,134,0)}}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;transition:.3s;z-index:40}.toast.on{transform:translate(-50%,0)}
+.modal{position:fixed;inset:0;background:rgba(10,12,9,.55);display:none;align-items:flex-end;justify-content:center;z-index:20}.modal.on{display:flex}.sheet{background:var(--bg);width:100%;max-width:640px;max-height:92vh;overflow:auto;border-radius:28px 28px 0 0;padding:20px}
+footer{border-top:1px solid var(--sage);padding:26px 16px 90px;text-align:center;color:var(--olive);font-size:14px}footer a{margin:0 8px;cursor:pointer}
+
+/* LUX */
+:root{--bg:#F1F0EB;--sage:#E0E2DA;--olive:#80897A;--ink:#12160F;--card:#FAFAF7;--ac:#B9C9A8;--ac2:#7F9A74;--sh:0 1px 0 rgba(0,0,0,.03)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#080A07;--sage:#1A1F18;--olive:#8E9987;--ink:#F1F0EA;--card:#10140E;--sh:none}}
+:root[data-theme="dark"]{--bg:#080A07;--sage:#1A1F18;--olive:#8E9987;--ink:#F1F0EA;--card:#10140E;--sh:none}
+body{font-weight:400;letter-spacing:-.01em}
+header{padding:14px 24px;border-bottom:1px solid color-mix(in srgb,var(--ink) 8%,transparent)}
+.logo{font-weight:600;letter-spacing:-.04em;font-size:21px}
+.tk{background:none;color:var(--olive);font-size:11px;letter-spacing:.22em;text-transform:uppercase;border-bottom:1px solid var(--sage)}
+.wrap{max-width:1240px;padding:0 24px 120px}
+.btn{padding:10px 22px;border-color:color-mix(in srgb,var(--ink) 18%,transparent);font-size:15px}
+.btn.p{background:var(--ink);color:var(--bg);font-weight:500;border:0}.btn.p:hover{box-shadow:0 10px 40px color-mix(in srgb,var(--ink) 30%,transparent);transform:none;opacity:.92}
+.hero{border-radius:40px;background:radial-gradient(120% 90% at 85% 0,#2c3a27 0,transparent 55%),radial-gradient(80% 80% at 0 100%,#1a2217 0,transparent 60%),#070906;border:1px solid rgba(255,255,255,.06)}
+.hero .btn.p{background:#F1F0EA;color:#0b0e0a}.hero.big{min-height:min(86vh,720px);padding:56px 28px}@media(min-width:760px){.hero.big{padding:88px 72px}}
+.hero h1{font-size:clamp(42px,8.4vw,96px);font-weight:600;letter-spacing:-.05em;line-height:.98}.hero h1 em{background:linear-gradient(100deg,#EEF3E4,#A9BC98 60%,#7F9A74);-webkit-background-clip:text;background-clip:text}
+.hero p{font-size:19px;font-weight:300;line-height:1.45;opacity:.7}.eb{letter-spacing:.3em;font-size:11px}
+.sec{font-weight:600;letter-spacing:-.045em;margin:88px 0 24px;font-size:clamp(28px,5vw,48px)}
+.grid{gap:22px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.card,.tile,.adv div{border-radius:34px;border:1px solid color-mix(in srgb,var(--ink) 7%,transparent);box-shadow:none;background:var(--card)}
+.card{padding:18px 18px 22px}.card.in:hover,.tile:hover{border-color:color-mix(in srgb,var(--ink) 22%,transparent);box-shadow:0 30px 80px -30px color-mix(in srgb,var(--ink) 35%,transparent)}
+.ph{border-radius:26px;background:radial-gradient(70% 60% at 50% 40%,color-mix(in srgb,var(--card) 60%,#fff 10%),var(--sage))}
+.card h3{font-size:18px;font-weight:600;letter-spacing:-.03em}.brand{letter-spacing:.18em;font-size:11px}.price{font-weight:500}
+.tag{background:var(--ink);color:var(--bg);letter-spacing:.08em;font-size:10px;text-transform:uppercase}
+.tile{padding:22px}.tile b{font-size:20px;font-weight:600;letter-spacing:-.03em}
+.gal{border-radius:40px;box-shadow:none;border:1px solid var(--sage);background:radial-gradient(70% 60% at 50% 40%,var(--card),var(--sage))}
+.pg h1{font-size:clamp(30px,5vw,48px);font-weight:600;letter-spacing:-.045em}
+.sw,.sws i{border-width:3px}
+.fab{background:var(--ink);color:var(--bg);box-shadow:0 14px 40px rgba(0,0,0,.35);font-weight:500;animation:none}
+.chip{border-radius:99px;padding:8px 18px}
+
+/* APPLE BOOM — ATELIER / premium redesign */
+:root{--bg:#F4F1EC;--sage:#E8E1D8;--olive:#81766B;--ink:#171715;--card:#FBF9F5;--ac:#C9A77B;--ac2:#9B7954;--sh:0 18px 60px rgba(48,38,27,.07);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11110F;--sage:#292722;--olive:#A99D8E;--ink:#F4F0E9;--card:#1A1916;--ac:#C9A77B;--ac2:#A17D56;--sh:0 18px 60px rgba(0,0,0,.25)}}
+:root[data-theme="dark"]{--bg:#11110F;--sage:#292722;--olive:#A99D8E;--ink:#F4F0E9;--card:#1A1916;--ac:#C9A77B;--ac2:#A17D56;--sh:0 18px 60px rgba(0,0,0,.25)}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:Inter,"SF Pro Display",-apple-system,"Segoe UI",sans-serif;letter-spacing:-.018em}
+header{padding:15px clamp(16px,4vw,54px);gap:12px;border-bottom:1px solid color-mix(in srgb,var(--ink) 9%,transparent)}
+.logo{font-size:23px;letter-spacing:-.055em}.logo span{background:linear-gradient(110deg,#B58D61,#E1C9A8 48%,#9A754E);-webkit-background-clip:text;background-clip:text}
+.search{background:color-mix(in srgb,var(--card) 84%,transparent);border-color:color-mix(in srgb,var(--ink) 10%,transparent);padding:11px 18px}
+.btn{border-color:color-mix(in srgb,var(--ink) 17%,transparent);padding:10px 19px;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px);background:var(--sage)}.btn.p{background:var(--ink);color:var(--bg);letter-spacing:.01em}.btn.p:hover{background:#9C7955;box-shadow:0 12px 30px rgba(156,121,85,.22)}
+nav{gap:10px}nav a{font-size:13px;letter-spacing:.025em;text-transform:uppercase}
+.tk{background:#191916;color:#D6C3A9;border:0;font-size:10px;letter-spacing:.2em;padding:9px 0}
+.wrap{max-width:1360px;padding:0 clamp(16px,4vw,54px) 120px}
+.hero{border-radius:5px;background:radial-gradient(ellipse at 78% 28%,rgba(180,143,99,.23),transparent 42%),linear-gradient(115deg,#171714 0%,#22201B 58%,#393025 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 90px rgba(36,29,21,.13)}
+.hero.big{min-height:min(78vh,760px);padding:58px 32px;isolation:isolate}.hero:before{width:560px;height:560px;right:-160px;top:-180px;background:radial-gradient(circle,rgba(201,167,123,.24),transparent 68%);filter:blur(8px)}
+.hero h1{font-size:clamp(46px,8vw,104px);font-weight:500;letter-spacing:-.075em;line-height:.91;max-width:760px}.hero h1 em{background:linear-gradient(100deg,#F5EBDD,#C8A77D 70%,#A98256);-webkit-background-clip:text;background-clip:text}
+.hero p{font-size:clamp(16px,1.7vw,20px);line-height:1.6;max-width:480px;color:#D5CEC4;opacity:.85}.eb{color:#C9A77B;opacity:1;letter-spacing:.28em;font-size:10px}
+.hero .btn.p{background:#F1E8DC;color:#171512}.hero .btn.g{border-color:rgba(255,255,255,.28);color:#F5F0E9}
+.hv{position:relative;z-index:1;animation:heroFloat 7s ease-in-out infinite;filter:drop-shadow(0 35px 42px rgba(0,0,0,.38))}.hv svg{max-height:440px;overflow:visible}.hv img{width:100%;height:auto;max-height:440px;object-fit:contain;border-radius:8px;mix-blend-mode:screen}.hv:after{content:"";position:absolute;z-index:-1;inset:18%;border-radius:50%;background:rgba(201,167,123,.16);filter:blur(70px)}
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-16px) rotate(1deg)}}
+.sec{font-size:clamp(30px,4.8vw,52px);font-weight:500;letter-spacing:-.065em;margin:90px 0 28px}
+.bento{gap:16px}.tile{border-radius:5px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);padding:22px;min-height:180px;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s,border-color .4s}.tile:hover{transform:translateY(-7px);box-shadow:0 24px 55px rgba(44,35,25,.1);border-color:var(--ac)}.tile b{font-size:18px;font-weight:550;letter-spacing:-.04em}.tile span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--olive)}.tile svg{max-height:125px;object-fit:contain}
+.grid{grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.card{border-radius:5px;padding:14px 14px 20px;background:var(--card);border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);box-shadow:none;transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .55s,border-color .35s}
+.card.in:hover{transform:translateY(-8px);border-color:color-mix(in srgb,var(--ac2) 55%,transparent);box-shadow:0 28px 60px rgba(50,39,27,.12)}
+.ph{border-radius:3px;background:linear-gradient(145deg,#F0ECE5,#E4DED4);aspect-ratio:1.08;overflow:hidden}.ph img{padding:8px;mix-blend-mode:multiply;object-fit:contain;transition:transform .8s cubic-bezier(.2,.8,.2,1)}.card:hover .ph img{transform:scale(1.075)}
+.brand{font-size:10px;letter-spacing:.2em;color:var(--olive)}.card h3{font-size:17px;font-weight:550;letter-spacing:-.035em;margin:9px 0 5px}.price{font-size:15px;font-weight:600}.tag{background:#B28D65;color:#fff;border-radius:2px;letter-spacing:.12em;padding:5px 9px;font-size:9px}.heart{border-radius:50%;box-shadow:0 3px 14px rgba(0,0,0,.08)}
+.chip{border-radius:3px;background:var(--card);border-color:color-mix(in srgb,var(--ink) 12%,transparent);font-size:13px}.chip.on{background:var(--ink);color:var(--bg)}
+.pg{gap:clamp(22px,5vw,72px)}.gal{border-radius:4px;background:linear-gradient(145deg,#F0ECE5,#E4DED4);border:0}.sl img{padding:12px;mix-blend-mode:multiply}.th div{border-radius:3px}.th div.on{border-color:var(--ac2)}
+.adv div{border-radius:4px;padding:26px;border:1px solid color-mix(in srgb,var(--ink) 8%,transparent);background:var(--card)}
+.fab{background:#191916;color:#F4EEE5;border-radius:3px;letter-spacing:.02em;padding:14px 22px;box-shadow:0 12px 34px rgba(0,0,0,.2);animation:fabGlow 4s ease-in-out infinite}
+@keyframes fabGlow{50%{box-shadow:0 14px 40px rgba(177,139,96,.25)}}
+footer{border-color:color-mix(in srgb,var(--ink) 10%,transparent);letter-spacing:.02em}
+.toast{border-radius:3px;background:#191916;color:#F4EEE5}
+.sheet{border-radius:5px 5px 0 0}
+/* subtle entrance motion */
+.card,.sec,.adv div,.tile{will-change:transform,opacity}
+.card.in{animation:riseIn .65s both}.sec.in{animation:riseIn .65s both}.adv div.in{animation:riseIn .7s both}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:759px){header{padding:12px 15px}.hero.big{min-height:unset;padding:46px 25px 30px;grid-template-columns:1fr}.hero h1{font-size:clamp(48px,13vw,72px)}.hv{max-width:85%;margin:0 auto -12px}.hv svg{max-height:260px}.hv img{max-height:260px}.sec{margin-top:64px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:9px 9px 14px}.ph{border-radius:2px}.card h3{font-size:14px}.brand{font-size:9px}.tag{top:14px;left:14px}.heart{top:12px;right:12px;width:31px;height:31px}.tile{padding:14px;min-height:145px}.tile b{font-size:15px}.tile svg{margin-top:10px}.fab{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));font-size:13px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* APPLE BOOM — ATELIER LUXURY EDITION */
+:root{--bg:#F4F0E9;--sage:#E5DED3;--olive:#8A7D6D;--ink:#171512;--card:#FBF9F5;--ac:#C6A77B;--ac2:#8F7351;--sh:0 18px 55px rgba(45,34,22,.08);color-scheme:light}
+:root[data-theme="dark"]{--bg:#11100E;--sage:#2A2621;--olive:#B2A18B;--ink:#F4F0E9;--card:#191714;--ac:#C6A77B;--ac2:#9C7D57;--sh:0 20px 60px rgba(0,0,0,.3);color-scheme:dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#11100E;--sage:#2A2621;--olive:#B2A18B;--ink:#F4F0E9;--card:#191714;--ac:#C6A77B;--ac2:#9C7D57;--sh:0 20px 60px rgba(0,0,0,.3);color-scheme:dark}}
+html{scroll-behavior:smooth}body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.018em;background-image:radial-gradient(ellipse at 50% -15%,rgba(198,167,123,.10),transparent 45%)}
+header{padding:16px clamp(16px,4vw,54px);background:rgba(244,240,233,.82);border-bottom:1px solid rgba(23,21,18,.08);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+:root[data-theme="dark"] header{background:rgba(17,16,14,.82)}
+.logo{font-size:23px;letter-spacing:-1.2px;font-weight:650}.logo span{background:linear-gradient(110deg,#9A7952,#D9C09B 55%,#9A7952);-webkit-background-clip:text;background-clip:text}
+.search{border-radius:999px;background:rgba(255,255,255,.65);border-color:rgba(23,21,18,.12);padding:11px 18px}
+.btn{border-radius:999px;padding:11px 21px;border-color:rgba(23,21,18,.16);font-size:14px;transition:transform .35s cubic-bezier(.2,.8,.2,1),background .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}.btn.p{background:linear-gradient(120deg,#201D19,#514335);color:#F7F2E9;box-shadow:0 8px 22px rgba(36,29,21,.16)}.btn.p:hover{background:linear-gradient(120deg,#514335,#201D19);box-shadow:0 14px 30px rgba(36,29,21,.22);transform:translateY(-3px)}
+nav a{font-size:13px;letter-spacing:.025em;text-transform:uppercase}.tk{background:transparent;color:var(--olive);border-bottom:1px solid var(--sage);font-size:10px;letter-spacing:.25em;text-transform:uppercase;padding:10px 0}.tk div{animation:mq 36s linear infinite}
+.wrap{max-width:1360px;padding:0 clamp(16px,4vw,54px) 120px}
+.hero{border-radius:8px;background:radial-gradient(ellipse at 80% 30%,rgba(198,167,123,.28),transparent 40%),linear-gradient(120deg,#11100E 0%,#211D18 56%,#413629 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 28px 80px rgba(28,22,16,.15)}
+.hero.big{min-height:min(78vh,740px);padding:clamp(34px,7vw,92px) clamp(24px,7vw,88px);grid-template-columns:1.02fr .98fr;gap:24px}
+.hero h1{font-size:clamp(44px,7.2vw,94px);font-weight:520;letter-spacing:-.075em;line-height:.96}.hero h1 em{background:linear-gradient(100deg,#F4E8D5,#C6A77B 65%,#9A7952);-webkit-background-clip:text;background-clip:text}
+.hero p{font-size:clamp(15px,1.4vw,19px);line-height:1.65;max-width:470px;color:#E9E1D5;opacity:.78}.eb{letter-spacing:.32em;color:#C9B18F}.hero .btn.p{background:#E8D9C4;color:#211A12}.hero .btn.g{border-color:rgba(255,255,255,.28);color:#F4F0E9}
+.hv{filter:drop-shadow(0 35px 45px rgba(0,0,0,.48));animation:heroFloat 7s ease-in-out infinite;position:relative;z-index:1}.hv img{width:100%;height:auto;max-height:490px;object-fit:contain;border-radius:12px;mix-blend-mode:screen;mask-image:radial-gradient(ellipse at center,#000 50%,transparent 78%)}
+.hero:before{width:520px;height:520px;right:-170px;top:-170px;background:radial-gradient(circle,rgba(198,167,123,.22),transparent 68%);animation:glow 9s ease-in-out infinite}
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-16px) rotate(1deg)}}@keyframes glow{50%{transform:scale(1.18);opacity:.65}}
+.sec{font-size:clamp(30px,4.6vw,52px);font-weight:520;letter-spacing:-.065em;margin:90px 0 26px}.grid{gap:20px;grid-template-columns:repeat(auto-fill,minmax(235px,1fr))}
+.card,.tile,.adv div{background:var(--card);border:1px solid rgba(23,21,18,.08);border-radius:8px;box-shadow:0 10px 40px rgba(35,28,20,.035)}.card{padding:14px 14px 20px;transition:transform .55s cubic-bezier(.2,.8,.2,1),box-shadow .5s,border-color .4s}.card.in:hover{transform:translateY(-9px);box-shadow:0 26px 60px rgba(35,28,20,.12);border-color:rgba(198,167,123,.55)}
+.ph{border-radius:5px;background:linear-gradient(145deg,#EEE8DE,#F9F6F0);aspect-ratio:1.08;overflow:hidden}.ph img{width:100%;height:100%;object-fit:contain;padding:5px;mix-blend-mode:multiply;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .5s}.card:hover .ph img{transform:scale(1.075);filter:contrast(1.03)}
+:root[data-theme="dark"] .ph{background:linear-gradient(145deg,#25211C,#171512)}:root[data-theme="dark"] .ph img{mix-blend-mode:normal}
+.card h3{font-size:17px;letter-spacing:-.035em;font-weight:560;margin:10px 0 4px}.brand{letter-spacing:.22em;font-size:10px;color:var(--olive)}.price{font-size:15px;font-weight:600;letter-spacing:-.02em}.tag{background:#211D18;color:#E9D8BF;border-radius:2px;letter-spacing:.14em}.heart{border:1px solid rgba(23,21,18,.08);box-shadow:0 4px 15px rgba(0,0,0,.06)}
+.bento{gap:12px}.tile{border-radius:8px;padding:20px;min-height:160px;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .4s}.tile:hover{transform:translateY(-6px);box-shadow:0 18px 42px rgba(35,28,20,.1)}.tile b{font-size:18px;font-weight:550}.tile span{font-size:11px;letter-spacing:.12em;text-transform:uppercase}.tile svg{max-height:115px;object-fit:contain}
+.pg{gap:clamp(24px,5vw,72px)}.gal{border-radius:8px;border:1px solid var(--sage);background:linear-gradient(145deg,#EEE8DE,#FAF8F4)}.sl{aspect-ratio:1.05}.sl img{object-fit:contain;padding:22px;mix-blend-mode:multiply}.th div{border-radius:5px}.sw,.sws i{box-shadow:0 0 0 1px rgba(23,21,18,.14)}.chip{border-color:var(--sage);background:var(--card)}.chip.on{background:#211D18;color:#F4F0E9;border-color:#211D18}
+.adv div{padding:26px;line-height:1.7}.fab{background:linear-gradient(120deg,#211D18,#594936);color:#F4F0E9;border-radius:999px;padding:14px 23px;box-shadow:0 12px 32px rgba(25,20,14,.24)}footer{border-color:var(--sage);letter-spacing:.01em}
+.card,.sec,.adv div{will-change:transform,opacity}.card{transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.2,1),box-shadow .5s,border-color .4s}.sec{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+@media(max-width:759px){header{padding:12px 15px}.hero.big{grid-template-columns:1fr;min-height:unset;padding:42px 24px 26px}.hero.big .hv{max-height:270px;overflow:hidden}.hero.big .hv img{max-height:270px}.sec{margin-top:64px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.card{padding:9px 9px 14px;border-radius:7px}.ph{border-radius:4px;aspect-ratio:.92}.card h3{font-size:14px}.brand{font-size:9px}.price{font-size:13px}.wrap{padding-left:14px;padding-right:14px}.bento{gap:9px}.tile{padding:14px;min-height:135px}.fab{right:12px;bottom:calc(14px + env(safe-area-inset-bottom,0px));font-size:13px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+</style></head><body>
+<header><div class="logo" onclick="go('home')">Apple <span>Boom</span></div>
+<input class="search" id="q" placeholder="Поиск по каталогу" oninput="sub='Все';go('cat',1)">
+<button class="btn" onclick="go('fav')">♡ <b id="nf">0</b></button><button class="btn p" onclick="go('cart')">Корзина <b id="nc">0</b></button>
+<a class="btn" href="https://t.me/Wagapapa21" target="_blank" rel="noopener">Telegram</a>
+<nav><a onclick="grp='';sub='Все';go('cat')">Каталог</a><span id="nv"></span><a onclick="go('contacts')">Контакты</a></nav></header>
+<div class="tk"><div><span>Оригинальная техника</span><span>Консультация в Telegram</span><span>iPhone · MacBook · iPad · PlayStation · Galaxy · Pixel</span><span>Выбирайте цвет и память</span><span>Оригинальная техника</span><span>Консультация в Telegram</span><span>iPhone · MacBook · iPad · PlayStation · Galaxy · Pixel</span><span>Выбирайте цвет и память</span></div></div>
+<main class="wrap" id="app"></main>
+<footer><a onclick="go('about')">О магазине</a><a onclick="go('delivery')">Доставка и оплата</a><a onclick="go('warranty')">Гарантии</a><a onclick="go('contacts')">Контакты</a><a onclick="go('admin')">Вход для администратора</a><br>Apple Boom · <a href="https://t.me/Wagapapa21" target="_blank" rel="noopener">@Wagapapa21</a></footer>
+<a class="fab" href="https://t.me/Wagapapa21" target="_blank" rel="noopener">Написать в Telegram</a>
+<div class="ov" id="ov" onclick="this.classList.remove('on')"><div id="ovc"></div></div>
+<div class="modal" id="m" onclick="if(event.target===this)this.classList.remove('on')"><div class="sheet" id="sh"></div></div>
+<div class="toast" id="t"></div>
+<script>
+const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){toast('Не удалось сохранить (память заполнена)')}};
+const $=s=>document.getElementById(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CATS={'Apple':['iPhone','MacBook','iPad','Apple Watch','AirPods','Другие устройства Apple'],'PlayStation и Gaming':['PlayStation','Игровые аксессуары'],'Android':['Samsung Galaxy','Google Pixel','Xiaomi и Redmi'],'Другие бренды':['Другие устройства']};
+const S=[["iPhone 17","Apple","iPhone","phone","A19",1,1],["iPhone 17 Pro","Apple","iPhone","phone","A19 Pro",1,1],["iPhone 17 Pro Max","Apple","iPhone","phone","A19 Pro",1,1],["iPhone Air","Apple","iPhone","phone","A19 Pro",1,0],
+["MacBook Air 13″ M4","Apple","MacBook","laptop","Apple M4",0,1],["MacBook Pro 14″ M5","Apple","MacBook","laptop","Apple M5",1,1],["iPad Pro M5","Apple","iPad","tablet","Apple M5",1,0],["iPad Air M3","Apple","iPad","tablet","Apple M3",0,0],
+["Apple Watch Series 11","Apple","Apple Watch","watch","",1,1],["Apple Watch Ultra 3","Apple","Apple Watch","watch","",1,0],["AirPods Pro 3","Apple","AirPods","buds","",1,1],["Apple TV 4K","Apple","Apple TV","tv","",0,0],["AirTag","Apple","Аксессуары Apple","acc","",0,0],["Apple Pencil Pro","Apple","Аксессуары Apple","acc","",0,0],
+["PlayStation 5","Sony","PlayStation 5","console","",0,1],["PlayStation 5 Pro","Sony","PlayStation 5 Pro","console","",0,1],["DualSense","Sony","Игровые контроллеры","pad","",0,1],["DualSense Edge","Sony","Игровые контроллеры","pad","",0,0],
+["Samsung Galaxy S25 Ultra","Samsung","Samsung Galaxy","phone","",0,1],["Samsung Galaxy S25","Samsung","Samsung Galaxy","phone","",0,0],["Samsung Galaxy Z Fold7","Samsung","Samsung Galaxy","phone","",1,0],["Google Pixel 10 Pro","Google","Google Pixel","phone","Tensor G5",1,1],["Google Pixel 10","Google","Google Pixel","phone","Tensor G5",1,0],["Xiaomi 15","Xiaomi","Xiaomi","phone","",0,0],["Redmi Note 14 Pro","Xiaomi","Redmi","phone","",0,0],
+["Sony WH-1000XM6","Sony","Наушники","headphones","",1,0],["Galaxy Watch8","Samsung","Умные часы","watch","",1,0],["JBL Flip 7","JBL","Портативные колонки","speaker","",1,0],["MagSafe Charger","Apple","Зарядные устройства","charger","",0,0],
+["iPhone 18 Pro","Apple","iPhone","phone","A20 Pro",1,1],["iPhone 18 Pro Max","Apple","iPhone","phone","A20 Pro",1,1],["iPhone Duo","Apple","iPhone","phone","A20 Pro",1,1]];
+function seed(){const p=S.map((a,i)=>({id:i+1,name:a[0],brand:a[1],sub:a[2],kind:a[3],price:null,old:null,stock:true,isNew:!!a[5],pop:!!a[6],desc:'',colors:[],mems:[],kits:[],specs:a[4]?[['Чип',a[4]]]:[],imgs:[]}));
+const C=(i,a)=>{p[i].colors=a.map(x=>({n:x[0],h:x[1]}))};
+C(0,[['Black','#2b2d2f'],['White','#f1f1ee'],['Mist Blue','#a9bfd6'],['Sage','#a8b8a0'],['Lavender','#b9aed0']]);p[0].mems=['256 ГБ','512 ГБ'];
+C(30,[['Black','#222326'],['Silver','#d9dadd'],['Glacier','#c7d5df'],['Burgundy','#542b38']]);p[30].mems=['256 ГБ','512 ГБ','1 ТБ','2 ТБ'];
+C(31,[['Black','#222326'],['Silver','#d9dadd'],['Glacier','#c7d5df'],['Burgundy','#542b38']]);p[31].mems=['256 ГБ','512 ГБ','1 ТБ','2 ТБ'];
+C(32,[['Star White','#f2f0e9'],['Night Sky','#252c38']]);p[32].mems=['256 ГБ','512 ГБ','1 ТБ','2 ТБ'];
+C(1,[['Silver','#d9d9dc'],['Cosmic Orange','#d9824a'],['Deep Blue','#2f3f5c']]);p[1].mems=['256 ГБ','512 ГБ','1 ТБ','2 ТБ'];
+C(2,[['Silver','#d9d9dc'],['Cosmic Orange','#d9824a'],['Deep Blue','#2f3f5c']]);p[2].mems=['256 ГБ','512 ГБ','1 ТБ','2 ТБ'];
+C(3,[['Space Black','#2a2a2c'],['Cloud White','#f0efeb'],['Light Gold','#e3d3ad'],['Sky Blue','#b6cde3']]);p[3].mems=['256 ГБ','512 ГБ','1 ТБ'];
+C(4,[['Midnight','#2b3240'],['Starlight','#e9e3d6'],['Sky Blue','#b3c9dd'],['Silver','#d7d8dc']]);
+C(6,[['Space Black','#2b2b2d'],['Silver','#d9d9dc']]);
+C(8,[['Jet Black','#232325'],['Rose Gold','#e0b8aa'],['Silver','#d9d9dc'],['Space Gray','#6e6e73']]);
+C(18,[['Titanium Silverblue','#a9b7c6'],['Titanium Black','#2c2c2e'],['Titanium Whitesilver','#e6e6e3'],['Titanium Gray','#8a8b8e']]);
+p[30].specs=[['Чип','A20 Pro'],['Дисплей','6,3″ Super Retina XDR'],['Камера','48 Мп Fusion с переменной диафрагмой']];p[31].specs=[['Чип','A20 Pro'],['Дисплей','6,9″ Super Retina XDR'],['Камера','48 Мп Fusion с переменной диафрагмой']];p[32].specs=[['Чип','A20 Pro'],['Внутренний дисплей','7,6″'],['Внешний дисплей','5,4″'],['Форм-фактор','Складной']];
+C(21,[['Obsidian','#26282b'],['Porcelain','#ece7df'],['Moonstone','#8c98a1'],['Jade','#8fb3a1']]);
+C(22,[['Obsidian','#26282b'],['Frost','#dfe6ea'],['Indigo','#6a74b8'],['Lemongrass','#d7dc7b']]);
+return{cats:CATS,prods:p,orders:[],next:100}}
+let db=ld('ab_db2',null)||seed();const seedProducts=seed().prods;seedProducts.filter(p=>p.id>=30&&!db.prods.some(x=>x.id===p.id)).forEach(p=>db.prods.push(p));
+// Объединяем малочисленные разделы, чтобы каталог выглядел компактно.
+const categoryMap={'Apple TV':'Другие устройства Apple','Аксессуары Apple':'Другие устройства Apple','PlayStation 5':'PlayStation','PlayStation 5 Pro':'PlayStation','Игровые контроллеры':'Игровые аксессуары','Игровые аксессуары':'Игровые аксессуары','Xiaomi':'Xiaomi и Redmi','Redmi':'Xiaomi и Redmi','Наушники':'Другие устройства','Умные часы':'Другие устройства','Портативные колонки':'Другие устройства','Зарядные устройства':'Другие устройства','Аксессуары':'Другие устройства','Другая электроника':'Другие устройства'};
+db.prods.forEach(p=>{if(categoryMap[p.sub])p.sub=categoryMap[p.sub]});db.cats=CATS;sv('ab_db2',db);let cart=ld('ab_cart',[]),fav=ld('ab_fav',[]),rec=ld('ab_rec',[]),view='home',grp='',sub='Все',brand='',sort='pop',onlyStock=false,sel={c:0,m:0,k:0},cur=null,authed=false,adminTab='p',tmp=[];
+const byId=i=>db.prods.find(p=>p.id==i),fmt=n=>n.toLocaleString('ru')+' ₽';
+function toast(s){const t=$('t');t.textContent=s;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)}
+function save(){sv('ab_cart',cart);sv('ab_fav',fav);$('nf').textContent=fav.length;$('nc').textContent=cart.reduce((a,b)=>a+b.q,0)}
+function go(v,keep){view=v;$('m').classList.remove('on');render();if(!keep)scrollTo(0,0)}
+/* illustrations */
+let U=0;
+function shade(h,a){const n=parseInt(h.slice(1),16),f=c=>Math.round(a>0?c+(255-c)*a:c*(1+a));return`rgb(${f(n>>16)},${f(n>>8&255)},${f(n&255)})`}
+function shape(k,F,S,h,nm,face){const sh=`<ellipse cx="200" cy="360" rx="95" ry="9" fill="#000" opacity=".13"/>`,sw=`<ellipse cx="185" cy="170" rx="60" ry="85" fill="${h}" opacity=".28"/>`;
+const ph=face?`<rect x="140" y="50" width="120" height="300" rx="27" fill="${F}"/><rect x="152" y="62" width="58" height="62" rx="17" fill="${shade(h,.25)}" stroke="${shade(h,-.25)}"/><circle cx="170" cy="82" r="10" fill="#10130f" stroke="${shade(h,.5)}" stroke-width="2"/><circle cx="194" cy="82" r="10" fill="#10130f" stroke="${shade(h,.5)}" stroke-width="2"/><circle cx="182" cy="106" r="10" fill="#10130f" stroke="${shade(h,.5)}" stroke-width="2"/><circle cx="232" cy="76" r="5" fill="${shade(h,.5)}"/>`:`<rect x="140" y="50" width="120" height="300" rx="27" fill="${F}"/><rect x="147" y="57" width="106" height="286" rx="21" fill="${S}"/>${sw}<rect x="184" y="66" width="32" height="10" rx="5" fill="#000"/><path d="M150 70 Q170 60 200 62" stroke="#fff" stroke-opacity=".25" fill="none"/>`;
+return sh+({phone:ph,
+laptop:`<rect x="72" y="105" width="256" height="168" rx="11" fill="${F}"/><rect x="80" y="113" width="240" height="152" rx="6" fill="${S}"/><ellipse cx="200" cy="190" rx="90" ry="50" fill="${h}" opacity=".3"/><path d="M40 273 H360 L346 288 H54 Z" fill="${F}"/><rect x="170" y="273" width="60" height="5" rx="2" fill="${shade(h,-.3)}"/>`,
+tablet:`<rect x="92" y="62" width="216" height="276" rx="24" fill="${F}"/><rect x="100" y="70" width="200" height="260" rx="17" fill="${S}"/><ellipse cx="200" cy="180" rx="80" ry="90" fill="${h}" opacity=".28"/>`,
+watch:`<rect x="168" y="30" width="64" height="340" rx="28" fill="${shade(h,-.35)}"/><rect x="138" y="132" width="124" height="136" rx="38" fill="${F}"/><rect x="147" y="141" width="106" height="118" rx="30" fill="${S}"/><circle cx="200" cy="200" r="30" fill="${h}" opacity=".35"/><rect x="262" y="180" width="8" height="26" rx="4" fill="${shade(h,-.2)}"/>`,
+buds:`<rect x="148" y="195" width="104" height="96" rx="42" fill="${F}"/><rect x="148" y="232" width="104" height="3" fill="${shade(h,-.3)}"/><ellipse cx="170" cy="140" rx="16" ry="34" fill="${F}"/><ellipse cx="230" cy="140" rx="16" ry="34" fill="${F}"/>`,
+tv:`<rect x="115" y="160" width="170" height="80" rx="20" fill="${S}"/><rect x="115" y="160" width="170" height="30" rx="20" fill="#fff" opacity=".08"/><circle cx="200" cy="215" r="4" fill="${h}"/>`,
+console:`<rect x="140" y="45" width="120" height="305" rx="38" fill="#f6f6f4" stroke="#d6d6d2"/><path d="M175 60 Q200 40 225 60 V335 Q200 350 175 335 Z" fill="${S}"/><rect x="190" y="70" width="20" height="3" rx="1" fill="#6c8cff"/>`,
+pad:`<path d="M90 190 Q95 150 150 150 H250 Q305 150 310 190 L322 280 Q326 312 300 312 Q282 312 272 290 L262 262 H138 L128 290 Q118 312 100 312 Q74 312 78 280 Z" fill="#f4f4f2" stroke="#d2d2cd"/><circle cx="150" cy="200" r="14" fill="#222"/><circle cx="250" cy="200" r="14" fill="#222"/><rect x="180" y="175" width="40" height="22" rx="8" fill="#e2e2dd"/>`,
+speaker:`<rect x="105" y="135" width="190" height="130" rx="65" fill="${F}"/><circle cx="200" cy="200" r="34" fill="${S}"/><circle cx="200" cy="200" r="10" fill="${h}" opacity=".6"/>`,
+charger:`<rect x="150" y="130" width="100" height="124" rx="18" fill="${F}"/><rect x="176" y="94" width="10" height="36" rx="3" fill="#9aa591"/><rect x="214" y="94" width="10" height="36" rx="3" fill="#9aa591"/>`,
+headphones:`<path d="M105 230 A95 110 0 0 1 295 230" stroke="${F}" stroke-width="18" fill="none" stroke-linecap="round"/><rect x="86" y="205" width="46" height="88" rx="20" fill="${F}"/><rect x="268" y="205" width="46" height="88" rx="20" fill="${F}"/>`}[k]||`<circle cx="200" cy="200" r="62" fill="${F}"/><circle cx="200" cy="200" r="22" fill="${S}"/>`)}
+function art(p,v,h){h=/^#[0-9a-f]{6}$/i.test(h||'')?h:'#BFC5B5';const id='g'+(U++),F=`url(#${id})`,S=`url(#${id}s)`;
+const defs=`<defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${shade(h,.4)}"/><stop offset=".5" stop-color="${h}"/><stop offset="1" stop-color="${shade(h,-.32)}"/></linearGradient><linearGradient id="${id}s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${shade(h,-.6)}"/><stop offset="1" stop-color="#0b0e0a"/></linearGradient><radialGradient id="${id}b" cx=".5" cy=".42" r=".75"><stop offset="0" stop-color="${shade(h,.82)}"/><stop offset="1" stop-color="#E7E9E1"/></radialGradient></defs>`;
+let g;if(v==0)g=shape(p.kind,F,S,h,p.name,0);else if(v==1)g=p.kind=='phone'?shape(p.kind,F,S,h,p.name,1):`<g transform="rotate(-14 200 200) translate(8 8)">${shape(p.kind,F,S,h,p.name,0)}</g>`;
+else g=`<g transform="translate(-62 14) rotate(-7 200 200) scale(.92)">${shape(p.kind,F,S,h,p.name,1)}</g><g transform="translate(56 0) scale(.95)">${shape(p.kind,F,S,h,p.name,0)}</g>`;
+return `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">${defs}<rect class="bg" width="400" height="400" fill="url(#${id}b)"/>${g}</svg>`}
+/* Индивидуальные фотографии: в каждой галерее только конкретная модель товара. */
+const PRODUCT_PHOTOS={
+31:[
+'https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-color-lineup-260909_big.jpg.large.jpg',
+'https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-2up-260909_inline.jpg.large.jpg'
+],
+32:[
+'https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-2up-260909_inline.jpg.large.jpg',
+'https://www.apple.com/newsroom/images/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/article/Apple-iPhone-18-Pro-color-lineup-260909_big.jpg.large.jpg'
+],
+33:[
+'https://www.apple.com/newsroom/images/2026/09/apple-unveils-iphone-duo/article/Apple-iPhone-Duo-colors-260909_big.jpg.large.jpg'
+],
+1:[
+'https://eposcomputer.com/cdn/shop/files/IMG-18064484_m_jpeg_1_bd184acc-31dd-416b-aca2-d4b9a135a8f4.jpg?v=1757693411&width=823',
+'https://eposcomputer.com/cdn/shop/files/IMG-18064485_m_jpeg_1_98ae9942-bce4-4f0f-b6dd-797be93ea9d1.jpg?v=1757693412&width=823',
+'https://eposcomputer.com/cdn/shop/files/IMG-18064486_m_jpeg_1_f8e01ad5-508e-4069-b016-4128bf683cfc.jpg?v=1757693411&width=823',
+'https://eposcomputer.com/cdn/shop/files/IMG-18064487_m_jpeg_1_1ae6ea89-013e-489e-92ac-06af1412f4da.jpg?v=1757693412&width=823'
+],
+2:['https://www.pbtech.co.nz/imgprod/M/P/MPHAPP817212.jpg?h=3366490703'],
+3:[
+'https://mercantile-pk.s3.ap-southeast-1.amazonaws.com/uploads/products/1758277195_1758277193936iPhone-17-Pro-%28600x600%29-%281%29.png',
+'https://electrosalam.ma/cdn/shop/files/0_rojet_5.png?v=1765192341&width=1080'
+],
+4:['https://static.swappa.com/media/listing/LAJX43190/eXtQpNXU.jpg'],
+5:[
+'https://titan.com.pa/cdn/shop/files/macbook-air-136-m4-256gb-16gb-ram-midnight-apple-11076538-2132544.jpg?v=1764104224&width=1445',
+'https://www.swcbookstore.com/outerweb/product_images/MacbookAir13inchM4lStarlight.png',
+'https://persianapple.ir/UpImage/70c1bac9-9fdc-430f-a38e-da5c3cab4b04.jpg'
+],
+6:['https://www.laptopsdirect.co.uk/Images/MDE44BA_1_Supersize.png?v=11'],
+7:['https://www.unboxify.in/cdn/shop/files/B0FWD9481X_0.jpg?v=1771406996'],
+8:['https://www.lasoo.com.au/assets/product/1955426/apple-ipad-air-11-inch-m3-128gb-wi-fi-starlight-3.jpg.5dc827cff33ea1e45671d590cb543d11.webp'],
+9:['https://inter-actif.com/cdn/shop/files/IMG-18079162_m_jpeg_1_f4ea512a-e2d5-418a-a9a7-8fe23a6b8c85.jpg?v=1757469427'],
+10:['https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MG9K4ref_VW_34FR%2Bwatch-case-49-titanium-black-ultra3_VW_34FR%2Bwatch-face-49-alpine-ultra3_VW_34FR_GEO_SG?.v=Z0VDUjM1WHl2WkprT2lXU0lRQWRHM2pDV2hhem5qNnpDenFtKzI1OXdzWjRaeVR4RW9XWXhWVHRHeXZEa3AwcDZpTzZlS09Bd0x4ZHpLanhpRFM3bEhJeTlvZUg2NDJab29oaTJoOXRFQXFrN2hMODArNDBKaEpIbGhiMk9pVXhtaGxTRHNJV3J2NTZUeTF1UFI5akF3RURuRVoxZjBkWlAvNkMrbU5jNUFLT0lodkdNeWd3SHAzZlUzNms5S2kxYTV3ZHB6VUg0cXhiSFFkSkkrM2ZpMHRnWHRBbVo2d0NsQmlQYUdLK2pqcw&bgc=fafafa&fmt=p-jpg&hei=720&qlt=80&trim=1&wid=752'],
+11:[
+'https://cdn8.web4s.vn/media/products/3605/tai-nghe-airpods-pro-3-2025-chinh-hang-05.jpg',
+'https://s3.us-east-1.amazonaws.com/product-image-bucket-nz-prod-us/462741-Product-1-I-638930627404154176.jpg'
+],
+15:['https://assets.pawnamerica.com/ProductImages/24521068640/7e3d0fc2-61bb-4b88-a0d1-c823860a83a1.jpg'],
+17:['https://gamescorner.bh/cdn/shop/products/geeceegames-com-ps5-dualsense-white-wireless-controller-29565316694064.jpg?v=1662676038&width=1946'],
+19:['https://www.softbank.jp/online-shop/set/data/special/products/lineup/samsung-galaxy/img/samsung-galaxy-s25-ultra.png'],
+20:['https://multimedia.bbycastatic.ca/multimedia/products/1500x1500/189/18925/18925584.jpg'],
+21:['https://future.com.kw/cdn/shop/files/imgi_3_554493-01.webp?v=1752160067&width=2048'],
+22:['https://www.au.com/adobe/dynamicmedia/deliver/dm-aid--92d7fa66-8387-4e31-b7b4-0e006b020f58/pixel10p_moonstone_01_d92aceb2690e766f.jpg?preferwebp=true&quality=90'],
+23:['https://lune.is/cdn/shop/files/F76D4B0C388B32CEF3FE59B62D308459.jpg-2.webp?v=1757072422&width=3840'],
+24:['https://xiaomiofficial.hu/cdn/shop/files/Xiaomi-15-White-12_256-GB-1.jpg?v=1765484893'],
+26:['https://store.sony.com.tw/resource/file/product_files/WH-1000XM6/02_502da2219.jpg'],
+27:['https://lmt-web.mstatic.lv/eshop/33409/conversions/1-samsung-galaxy-watch8-44mm-silver-860.webp'],
+28:['https://hniesfp.imgix.net/8/images/detailed/1042/JBLFLIP7BLK_2.jpg?auto=format%2Ccompress&bg=0FFF&fit=fill&h=1000&w=1500'],
+29:['https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MHXH3_AV1?.v=M1VzY2ljeFlzTWQ3Nk00MURQVnpSMVZya2lKWlJmUEwrYndWOTJiVWJWQUYwVmtIbGRkS25RMVpBRlo0bk5DUUJrc0hiZWVveXB2VlZCZXFveE1jSUE&fmt=jpeg&hei=1144&qlt=90&wid=1144']
+};
+function slides(p,c){
+ const chosen=p.colors[c]?.imgs?.length?p.colors[c].imgs:(p.imgs?.length?p.imgs:(PRODUCT_PHOTOS[p.id]||[]));
+ if(!chosen.length)return [art(p,0,p.colors[c]?.h||p.colors[0]?.h)];
+ return chosen.map(u=>`<img src="${esc(u)}" alt="${esc(p.name)} — фото товара" loading="lazy" onerror="this.style.display='none'">`);
+}
+function card(p){const pr=p.price?fmt(p.price)+(p.old?`<span class="old">${fmt(p.old)}</span>`:''):'<span class="note">Уточнить стоимость</span>';
+return `<div class="card" data-c="0" onclick="open1(${p.id},+this.dataset.c)">${p.isNew?'<span class="tag">Новинка</span>':''}<button class="heart" onclick="tf(${p.id},event)">${fav.includes(p.id)?'♥':'♡'}</button><div class="ph">${slides(p,0)[0]}</div><div class="sws">${p.colors.slice(0,6).map((c,k)=>`<i class="${k?'':'on'}" title="${esc(c.n)}" style="background:${esc(c.h)}" onclick="cc(event,${p.id},${k})"></i>`).join('')}</div><div class="brand">${esc(p.brand)}</div><h3>${esc(p.name)}</h3><div class="price">${pr}</div>${p.stock?'':'<div class="note">Нет в наличии</div>'}</div>`}
+function cc(e,i,k){e.stopPropagation();const c=e.target.closest('.card');c.dataset.c=k;c.querySelector('.ph').innerHTML=slides(byId(i),k)[0];[...e.target.parentNode.children].forEach((x,j)=>x.classList.toggle('on',j==k))}
+let io=null;function reveal(){if(!io)io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.card,.sec,.adv div').forEach(e=>io.observe(e));setTimeout(()=>document.querySelectorAll('.card,.sec,.adv div').forEach(e=>e.classList.add('in')),1200)}
+function tf(i,e){e&&e.stopPropagation();fav=fav.includes(i)?fav.filter(x=>x!=i):[...fav,i];save();render()}
+/* product page */
+function open1(i,c){cur=i;sel={c:c||0,m:0,k:0};rec=[i,...rec.filter(x=>x!=i)].slice(0,8);sv('ab_rec',rec);view='prod';render();scrollTo(0,0)}
+function zoom(k){const p=byId(cur);$('ovc').innerHTML=slides(p,sel.c)[k];$('ov').classList.add('on')}
+function pick(t,v){sel[t]=v;if(t=='c'){const p=byId(cur);$('gal').innerHTML=slides(p,v).map((s,k)=>`<div class="sl" onclick="zoom(${k})">${s}</div>`).join('');$('gal').scrollTo(0,0);dots()}const lb=document.querySelector('.l'+t);if(lb&&t=='c')lb.textContent='Цвет: '+byId(cur).colors[v].n;document.querySelectorAll('.o'+t).forEach((e,k)=>e.classList.toggle('on',k==v))}
+function dots(){const g=$('gal');if(!g)return;const k=Math.round(g.scrollLeft/g.clientWidth);document.querySelectorAll('.th div').forEach((e,j)=>e.classList.toggle('on',j==k))}
+function sp(p){const o=(t,a,l,f)=>a.length?`<b class="l${t}">${l}</b><div class="opt">${a.map((x,k)=>t=='c'?`<span class="sw oc ${k==sel.c?'on':''}" title="${esc(x.n)}" style="background:${esc(x.h)}" onclick="pick('c',${k})"></span>`:`<span class="chip o${t} ${k==sel[t]?'on':''}" onclick="pick('${t}',${k})">${esc(x)}</span>`).join('')}</div>`:'';return o('c',p.colors,'Цвет: '+(p.colors[sel.c]?.n||''))+o('m',p.mems,'Память')+o('k',p.kits,'Комплектация')}
+function prodPage(p){const sl=slides(p,sel.c);const pr=p.price?`<div style="font-size:26px;font-weight:700">${fmt(p.price)}${p.old?`<span class="old">${fmt(p.old)}</span>`:''}</div>`:'<div style="font-size:20px">Уточнить стоимость</div>';
+const sim=db.prods.filter(x=>x.id!=p.id&&(x.sub==p.sub||x.kind==p.kind)).slice(0,4),rv=rec.filter(x=>x!=p.id).map(byId).filter(Boolean).slice(0,4);
+return `<a class="btn s" onclick="go('cat')" style="margin-top:14px">← В каталог</a><div class="pg"><div><div class="gal" id="gal" onscroll="dots()">${sl.map((s,k)=>`<div class="sl" onclick="zoom(${k})">${s}</div>`).join('')}</div><div class="th">${sl.map((s,k)=>`<div class="${k?'':'on'}" onclick="$('gal').scrollTo({left:${k}*$('gal').clientWidth,behavior:'smooth'})">${s}</div>`).join('')}</div><p class="note">Листайте фото свайпом, нажмите — увеличить</p></div>
+<div><div class="brand">${esc(p.brand)} · ${esc(p.sub)}</div><h1 style="margin:2px 0 8px;letter-spacing:-.5px">${esc(p.name)}</h1>${pr}<p>${p.stock?'✓ В наличии (уточняйте у менеджера)':'Нет в наличии — напишите, сообщим о поступлении'}</p>${sp(p)}${p.desc?`<p>${esc(p.desc)}</p>`:''}
+<div class="bar"><button class="btn p" onclick="addC(${p.id})">Добавить в корзину</button><button class="btn" onclick="tf(${p.id});">${fav.includes(p.id)?'♥ В избранном':'♡ В избранное'}</button><a class="btn" target="_blank" rel="noopener" href="https://t.me/Wagapapa21?text=${encodeURIComponent('Здравствуйте! Хочу заказать: '+cfg(p))}">Заказать в Telegram</a></div>
+<h3>Характеристики</h3>${p.specs.length?`<table>${p.specs.map(s=>`<tr><td>${esc(s[0])}</td><td>${esc(s[1])}</td></tr>`).join('')}</table>`:'<p class="note">Характеристики уточняются. Администратор добавит подтверждённые данные производителя.</p>'}</div></div>
+${sim.length?`<h2 class="sec">Похожие товары</h2><div class="grid">${sim.map(card).join('')}</div>`:''}${rv.length?`<h2 class="sec">Недавно просмотренные</h2><div class="grid">${rv.map(card).join('')}</div>`:''}`}
+function cfg(p){return [p.name,p.colors[sel.c]?.n,p.mems[sel.m],p.kits[sel.k]].filter(Boolean).join(', ')}
+function addC(i){const p=byId(i),l=cfg(p),e=cart.find(x=>x.l==l);e?e.q++:cart.push({id:i,l,q:1});save();toast('Добавлено: '+p.name)}
+/* pages */
+const PG={about:['О магазине','Apple Boom — магазин современной электроники: техника Apple, PlayStation, Samsung, Google Pixel, Xiaomi и популярные аксессуары. Подбор и оформление заказа — в Telegram.'],delivery:['Доставка и оплата','Условия доставки и способы оплаты согласовываются менеджером в Telegram при оформлении заказа. Актуальные детали добавит администратор магазина.'],warranty:['Гарантии','Срок и условия гарантии зависят от товара и производителя и подтверждаются менеджером при заказе. Администратор добавит точные условия.'],contacts:['Контакты','Связь и оформление заказов — в Telegram: @Wagapapa21.']};
+function render(){const a=$('app'),q=$('q').value.trim().toLowerCase();$('nv').innerHTML=Object.keys(db.cats).map(g=>`<a onclick="grp='${esc(g)}';sub='Все';go('cat')">${esc(g)}</a>`).join('');let h='';
+if(view=='home'){const hot=db.prods.filter(p=>p.pop).slice(0,4),nw=db.prods.filter(p=>p.isNew).sort((x,y)=>y.id-x.id).slice(0,4),of=db.prods.filter(p=>p.old).slice(0,4);
+h=`<section class="hero big"><div><div class="eb">Apple Boom · 2026</div><h1>Технологии.<br><em>Искусство</em> выбора.</h1><p>Избранные устройства Apple, PlayStation, Samsung и Google Pixel. Эстетика технологий — в каждой детали.</p><button class="btn p" onclick="grp='';go('cat')">Смотреть каталог</button> <a class="btn g" target="_blank" rel="noopener" href="https://t.me/Wagapapa21">Написать в Telegram</a></div><div class="hv"><img src="https://electrosalam.ma/cdn/shop/files/0_rojet_5.png?v=1765192341&width=1080" alt="iPhone 17 Pro Max" loading="eager" onerror="this.style.display='none'"></div></section>
+<h2 class="sec">Выберите категорию</h2><div class="bento">${['iPhone','MacBook','iPad','Apple Watch','AirPods','PlayStation','Samsung Galaxy','Google Pixel','Другие устройства'].map(c=>{const p=db.prods.find(x=>x.sub==c);return p?`<div class="tile" onclick="grp='';sub='${c}';go('cat')"><b>${c}</b><span>Смотреть →</span>${art(p,0,p.colors[0]?.h)}</div>`:''}).join('')}</div>
+<h2 class="sec">Популярные товары</h2><div class="grid">${hot.map(card).join('')}</div><h2 class="sec">Новинки</h2><div class="grid">${nw.map(card).join('')}</div>
+${of.length?`<h2 class="sec">Специальные предложения</h2><div class="grid">${of.map(card).join('')}</div>`:''}
+<h2 class="sec">Преимущества</h2><div class="adv"><div><b>Оригинальная техника</b><br>Только существующие модели.</div><div><b>Быстрая связь</b><br>Отвечаем в Telegram.</div><div><b>Честные цены</b><br>Без выдуманных данных.</div></div>
+<section class="hero" style="margin-top:32px"><h2 style="margin:0 0 8px">Нужна консультация?</h2><p>Поможем выбрать модель и оформим заказ.</p><a class="btn p" target="_blank" rel="noopener" href="https://t.me/Wagapapa21">Написать в Telegram</a></section>`}
+else if(view=='cat'){const subs=grp?db.cats[grp]||[]:Object.values(db.cats).flat();let l=db.prods.filter(p=>(sub=='Все'?subs.includes(p.sub)||!grp:p.sub==sub)&&(!brand||p.brand==brand)&&(!onlyStock||p.stock)&&(!q||(p.name+p.brand+p.sub).toLowerCase().includes(q)));
+l.sort((x,y)=>sort=='lo'?(x.price||9e9)-(y.price||9e9):sort=='hi'?(y.price||0)-(x.price||0):sort=='new'?y.isNew-x.isNew||y.id-x.id:y.pop-x.pop);
+h=`<h2 class="sec">${esc(grp||'Каталог')}</h2><div class="chips">${['Все',...subs].map(c=>`<span class="chip ${c==sub?'on':''}" onclick="sub='${esc(c)}';render()">${esc(c)}</span>`).join('')}</div>
+<div class="bar"><select onchange="brand=this.value;render()"><option value="">Все бренды</option>${[...new Set(db.prods.map(p=>p.brand))].map(b=>`<option ${b==brand?'selected':''}>${esc(b)}</option>`).join('')}</select>
+<select onchange="sort=this.value;render()">${[['pop','По популярности'],['new','По новизне'],['lo','Сначала дешевле'],['hi','Сначала дороже']].map(o=>`<option value="${o[0]}" ${sort==o[0]?'selected':''}>${o[1]}</option>`).join('')}</select>
+<label><input type="checkbox" ${onlyStock?'checked':''} onchange="onlyStock=this.checked;render()"> В наличии</label><span class="note">Найдено: ${l.length}</span></div>${l.length?`<div class="grid">${l.map(card).join('')}</div>`:'<p>Ничего не найдено. Спросите в Telegram — подберём.</p>'}`}
+else if(view=='prod'){const p=byId(cur);h=p?prodPage(p):nf()}
+else if(view=='fav'){const l=fav.map(byId).filter(Boolean);h=`<h2 class="sec">Избранное</h2>${l.length?`<div class="grid">${l.map(card).join('')}</div>`:'<p>Пока пусто.</p>'}`}
+else if(view=='cart'){const tot=cart.reduce((s,x)=>s+(byId(x.id)?.price||0)*x.q,0),unk=cart.some(x=>!byId(x.id)?.price);h=`<h2 class="sec">Корзина</h2>`+(cart.length?cart.map((x,i)=>`<div class="row"><span>${esc(x.l)}</span><span><input type="number" min="1" value="${x.q}" onchange="cart[${i}].q=Math.max(1,+this.value||1);save();render()"> <button class="btn s" onclick="cart.splice(${i},1);save();render()">✕</button></span></div>`).join('')+`<p><b>Итого: ${tot?fmt(tot):'—'}</b> ${unk?'<span class="note">(часть цен уточняется у менеджера)</span>':''}</p>
+<input class="f" id="nm" placeholder="Имя"><input class="f" id="ct" placeholder="Телефон или Telegram"><textarea class="f" id="cm" rows="3" placeholder="Комментарий к заказу"></textarea><button class="btn p" onclick="order(${tot})">Оформить в Telegram</button>`:'<p>Корзина пуста.</p>')}
+else if(PG[view])h=`<h2 class="sec">${PG[view][0]}</h2><p style="max-width:620px">${PG[view][1]}</p>${view=='contacts'?'<a class="btn p" target="_blank" rel="noopener" href="https://t.me/Wagapapa21">Открыть Telegram</a>':''}`;
+else if(view=='admin')h=admin();else h=nf();a.innerHTML=h;save();reveal()}
+function nf(){return '<h2 class="sec">404</h2><p>Страница не найдена.</p><button class="btn p" onclick="go(\'home\')">На главную</button>'}
+function order(tot){const n=$('nm').value.trim(),c=$('ct').value.trim();if(n.length<2||c.length<3){toast('Укажите имя и контакт');return}
+const t=`Заказ Apple Boom\nИмя: ${n}\nКонтакт: ${c}\n`+cart.map(x=>`• ${x.l} × ${x.q}`).join('\n')+`\nИтого: ${tot?fmt(tot):'уточнить'}\nКомментарий: ${$('cm').value||'—'}`;
+db.orders.unshift({d:new Date().toLocaleString('ru'),n,c,t});sv('ab_db2',db);try{navigator.clipboard.writeText(t)}catch(e){}window.open('https://t.me/Wagapapa21?text='+encodeURIComponent(t),'_blank');toast('Текст заказа скопирован');cart=[];save()}
+/* admin (local to this browser) */
+async function hash(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('ab:'+s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function auth(){const pw=$('pw').value,h0=ld('ab_pw',null);if(pw.length<8){toast('Пароль — минимум 8 символов');return}const h=await hash(pw);if(!h0){sv('ab_pw',h);authed=true}else if(h==h0)authed=true;else{toast('Неверный пароль');return}render()}
+function admin(){if(!authed)return `<h2 class="sec">Администратор</h2><p class="note">${ld('ab_pw',null)?'Введите пароль.':'Первый вход: придумайте пароль (минимум 8 символов). Он хранится только как хеш SHA-256 в этом браузере.'}</p><input class="f" id="pw" type="password" placeholder="Пароль" style="max-width:320px"><br><button class="btn p" onclick="auth()">Войти</button>`;
+const tabs=`<div class="chips">${[['p','Товары'],['c','Категории'],['o','Заказы']].map(t=>`<span class="chip ${adminTab==t[0]?'on':''}" onclick="adminTab='${t[0]}';render()">${t[1]}</span>`).join('')}<span class="chip" onclick="authed=false;render()">Выйти</span></div><p class="note">Демо-режим: изменения сохраняются в этом браузере. Чтобы они видны были всем покупателям, нужен сервер и база данных.</p>`;
+if(adminTab=='c')return `<h2 class="sec">Категории</h2>${tabs}${Object.entries(db.cats).map(([g,l])=>`<div class="row"><b>${esc(g)}</b><span>${l.map(esc).join(', ')}</span></div>`).join('')}<h3>Добавить</h3><select id="cg">${Object.keys(db.cats).map(g=>`<option>${esc(g)}</option>`).join('')}</select> <input class="f" id="cn" placeholder="Название категории" style="max-width:300px"><button class="btn p" onclick="addCat()">Добавить</button>`;
+if(adminTab=='o')return `<h2 class="sec">Заказы</h2>${tabs}${db.orders.length?db.orders.map((o,i)=>`<div class="row"><span><b>${esc(o.d)}</b><br><span style="white-space:pre-line">${esc(o.t)}</span></span><button class="btn s" onclick="db.orders.splice(${i},1);sv('ab_db2',db);render()">Удалить</button></div>`).join(''):'<p>Заказов пока нет.</p>'}`;
+return `<h2 class="sec">Товары</h2>${tabs}<button class="btn p" onclick="edit(0)">+ Добавить товар</button>${db.prods.map(p=>`<div class="row"><span>${esc(p.name)} <span class="note">${esc(p.sub)}</span></span><span><button class="btn s" onclick="edit(${p.id})">Изменить</button> <button class="btn s" onclick="delP(${p.id})">Удалить</button></span></div>`).join('')}`}
+function addCat(){const n=$('cn').value.trim(),g=$('cg').value;if(!n)return;db.cats[g].push(n);sv('ab_db2',db);render()}
+function delP(i){if(confirm('Удалить товар?')){db.prods=db.prods.filter(p=>p.id!=i);sv('ab_db2',db);render()}}
+function edit(i){const p=i?byId(i):{id:0,name:'',brand:'',sub:Object.values(db.cats)[0][0],kind:'phone',price:null,old:null,stock:true,isNew:false,pop:false,desc:'',colors:[],mems:[],kits:[],specs:[],imgs:[]};tmp=[...p.imgs];const v=(id,x)=>`id="${id}" value="${esc(x)}"`;
+$('sh').innerHTML=`<h3>${i?'Редактирование':'Новый товар'}</h3><input class="f" ${v('f1',p.name)} placeholder="Название"><input class="f" ${v('f2',p.brand)} placeholder="Бренд"><select class="f" id="f3">${Object.values(db.cats).flat().map(c=>`<option ${c==p.sub?'selected':''}>${esc(c)}</option>`).join('')}</select>
+<select class="f" id="f4">${['phone','laptop','tablet','watch','buds','tv','console','pad','speaker','charger','headphones','acc'].map(k=>`<option ${k==p.kind?'selected':''}>${k}</option>`).join('')}</select>
+<input class="f" type="number" ${v('f5',p.price??'')} placeholder="Цена, ₽ (пусто = уточнить)"><input class="f" type="number" ${v('f6',p.old??'')} placeholder="Старая цена (скидка)">
+<label><input type="checkbox" id="f7" ${p.stock?'checked':''}> В наличии</label> <label><input type="checkbox" id="f8" ${p.isNew?'checked':''}> Новинка</label> <label><input type="checkbox" id="f9" ${p.pop?'checked':''}> Популярный</label>
+<textarea class="f" id="fa" rows="2" placeholder="Описание">${esc(p.desc)}</textarea><input class="f" ${v('fb',p.colors.map(c=>c.n+':'+c.h).join(', '))} placeholder="Цвета: Silver:#d9d9dc, Blue:#2f3f5c"><input class="f" ${v('fc',p.mems.join(', '))} placeholder="Память: 256 ГБ, 512 ГБ"><input class="f" ${v('fd',p.kits.join(', '))} placeholder="Комплектация: Базовая, Pro">
+<textarea class="f" id="fe" rows="3" placeholder="Характеристики: Ключ: значение (по строке)">${esc(p.specs.map(s=>s.join(': ')).join('\n'))}</textarea><textarea class="f" id="ff" rows="2" placeholder="Ссылки на фото (по строке)">${esc(p.imgs.filter(u=>!u.startsWith('data:')).join('\n'))}</textarea>
+<input type="file" accept="image/*" multiple onchange="up(this)"><p class="note" id="fn">Загружено файлов: ${p.imgs.filter(u=>u.startsWith('data:')).length}</p><button class="btn p" onclick="saveP(${i})">Сохранить</button>`;$('m').classList.add('on')}
+function up(el){[...el.files].forEach(f=>{const r=new FileReader();r.onload=()=>{tmp.push(r.result);$('fn').textContent='Загружено файлов: '+tmp.filter(u=>u.startsWith('data:')).length};r.readAsDataURL(f)})}
+function saveP(i){const g=x=>$(x).value.trim(),n=g('f1');if(!n){toast('Укажите название');return}const l=s=>s.split(',').map(x=>x.trim()).filter(Boolean);
+const o={name:n,brand:g('f2'),sub:g('f3'),kind:g('f4'),price:+g('f5')||null,old:+g('f6')||null,stock:$('f7').checked,isNew:$('f8').checked,pop:$('f9').checked,desc:g('fa'),colors:l(g('fb')).map(c=>{const[a,b]=c.split(':');return{n:a,h:(b||'#C9CDC0').trim()}}),mems:l(g('fc')),kits:l(g('fd')),specs:g('fe').split('\n').map(s=>s.split(/:(.*)/).map(x=>x.trim())).filter(s=>s[0]&&s[1]),imgs:[...g('ff').split('\n').map(s=>s.trim()).filter(Boolean),...tmp.filter(u=>u.startsWith('data:'))]};
+if(i)Object.assign(byId(i),o);else db.prods.push({id:db.next++,...o});sv('ab_db2',db);$('m').classList.remove('on');render();toast('Сохранено')}
+save();render();
+</script></body></html>
