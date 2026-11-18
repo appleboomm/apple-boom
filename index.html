@@ -3,1333 +3,522 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#e9eee7">
-<meta name="description" content="Apple Boom — магазин оригинальной техники Apple, PlayStation и Android. Подбор и заказ техники через Telegram.">
-<title>Apple Boom — Technology, beautifully.</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#e9e8df">
+<title>Apple Boom — Premium Tech Store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #f5f6f1;
-  --sage: #dfe7dc;
-  --sage-dark: #879887;
-  --green: #526c59;
-  --ink: #20251f;
-  --muted: #858b81;
-  --white: #fff;
-  --line: #e7e9e2;
-  --radius: 23px;
-  --shadow: 0 12px 40px rgba(38,51,38,.07);
-}
-
-* { box-sizing:border-box; margin:0; padding:0; }
-
-html { scroll-behavior:smooth; }
-
-body {
-  background:var(--bg);
-  color:var(--ink);
-  font-family:'DM Sans',sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
-
-button, input, select { font:inherit; }
-button { cursor:pointer; }
-a { color:inherit; text-decoration:none; }
-
-.container {
-  width:min(1240px, calc(100% - 44px));
-  margin:auto;
-}
-
-/* HEADER */
-
-header {
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:rgba(245,246,241,.92);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(220,225,216,.8);
-}
-
-.nav {
-  height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.logo {
-  font-family:Manrope,sans-serif;
-  font-size:25px;
-  font-weight:800;
-  letter-spacing:-1.5px;
-}
-
-.logo span { color:var(--green); }
-
-.nav-links {
-  display:flex;
-  align-items:center;
-  gap:27px;
-  font-size:13px;
-  color:#60675e;
-}
-
-.nav-links a:hover { color:var(--green); }
-
-.nav-actions {
-  display:flex;
-  gap:10px;
-}
-
-.icon-btn {
-  width:43px;
-  height:43px;
-  border:1px solid var(--line);
-  background:white;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  font-size:17px;
-  position:relative;
-}
-
-.count {
-  position:absolute;
-  top:-4px;
-  right:-4px;
-  background:var(--green);
-  color:white;
-  border-radius:50%;
-  font-size:10px;
-  width:17px;
-  height:17px;
-  display:grid;
-  place-items:center;
-}
-
-/* HERO */
-
-.hero {
-  padding:36px 0 55px;
-}
-
-.hero-inner {
-  min-height:450px;
-  background:linear-gradient(115deg,#dfe8dd 0%,#e9ede5 55%,#d6e0d5 100%);
-  border-radius:32px;
-  padding:65px 7%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  overflow:hidden;
-  position:relative;
-}
-
-.hero-copy {
-  position:relative;
-  z-index:2;
-  max-width:490px;
-}
-
-.eyebrow {
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:var(--green);
-  margin-bottom:22px;
-}
-
-.hero h1 {
-  font-family:Manrope,sans-serif;
-  font-size:clamp(42px,6vw,70px);
-  line-height:1.08;
-  letter-spacing:-3px;
-  font-weight:700;
-}
-
-.hero h1 span { color:var(--green); }
-
-.hero-copy p {
-  margin-top:20px;
-  color:#687267;
-  line-height:1.8;
-  max-width:390px;
-  font-size:15px;
-}
-
-.primary-btn {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  background:var(--ink);
-  color:white;
-  border:0;
-  border-radius:30px;
-  padding:16px 25px;
-  font-size:13px;
-  font-weight:600;
-  transition:.25s;
-  margin-top:28px;
-}
-
-.primary-btn:hover {
-  background:var(--green);
-  transform:translateY(-2px);
-}
-
-.hero-art {
-  position:absolute;
-  right:7%;
-  top:50%;
-  transform:translateY(-50%);
-  width:370px;
-  height:340px;
-  display:grid;
-  place-items:center;
-}
-
-.hero-device {
-  width:175px;
-  height:305px;
-  border-radius:35px;
-  border:7px solid #353c36;
-  background:linear-gradient(145deg,#b8c9b8,#819b86,#dce5d9);
-  transform:rotate(-12deg);
-  box-shadow:30px 35px 65px rgba(47,64,48,.22);
-  position:relative;
-}
-
-.hero-device:before {
-  content:"";
-  position:absolute;
-  width:60px;
-  height:17px;
-  border-radius:20px;
-  background:#343b35;
-  top:8px;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-.hero-device:after {
-  content:"AB";
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-  font-family:Manrope;
-  font-size:55px;
-  font-weight:800;
-  color:rgba(255,255,255,.75);
-}
-
-.hero-orb {
-  position:absolute;
-  width:270px;
-  height:270px;
-  background:#c5d4c3;
-  border-radius:50%;
-  filter:blur(1px);
-}
-
-/* BENEFITS */
-
-.benefits {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin:0 0 75px;
-}
-
-.benefit {
-  background:white;
-  padding:23px;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  gap:15px;
-}
-
-.benefit-icon {
-  width:45px;
-  height:45px;
-  background:var(--sage);
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  font-size:20px;
-}
-
-.benefit strong {
-  display:block;
-  font-size:13px;
-  margin-bottom:5px;
-}
-
-.benefit small {
-  color:var(--muted);
-  font-size:11px;
-}
-
-/* SECTION */
-
-.section { padding:0 0 80px; }
-
-.section-heading {
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:20px;
-  margin-bottom:28px;
-}
-
-.section-heading h2 {
-  font-family:Manrope,sans-serif;
-  font-size:clamp(27px,4vw,38px);
-  letter-spacing:-1.5px;
-}
-
-.section-heading p {
-  color:var(--muted);
-  font-size:13px;
-  margin-top:8px;
-}
-
-/* CATEGORIES */
-
-.categories {
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:13px;
-  margin-bottom:55px;
-}
-
-.category {
-  background:white;
-  border:1px solid transparent;
-  padding:22px 12px;
-  border-radius:19px;
-  text-align:center;
-  transition:.2s;
-  color:var(--ink);
-}
-
-.category:hover,.category.active {
-  border-color:#a8b9a7;
-  background:#edf2eb;
-  transform:translateY(-3px);
-}
-
-.category-icon {
-  font-size:30px;
-  display:block;
-  margin-bottom:12px;
-}
-
-.category span:last-child {
-  font-size:12px;
-  font-weight:600;
-}
-
-/* CATALOG */
-
-.catalog-tools {
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:23px;
-}
-
-.search {
-  flex:1;
-  min-width:200px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:14px 17px;
-  outline:none;
-  color:var(--ink);
-}
-
-.search:focus { border-color:var(--sage-dark); }
-
-.filter {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:13px 15px;
-  color:var(--ink);
-  outline:none;
-  min-width:140px;
-}
-
-.products {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:20px;
-}
-
-.product {
-  background:white;
-  border:1px solid #eeefe9;
-  border-radius:23px;
-  padding:13px;
-  transition:.25s;
-  position:relative;
-  overflow:hidden;
-}
-
-.product:hover {
-  transform:translateY(-5px);
-  box-shadow:var(--shadow);
-}
-
-.product-visual {
-  height:230px;
-  border-radius:16px;
-  background:linear-gradient(145deg,#f0f2ec,#e5eae1);
-  display:grid;
-  place-items:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.product-visual img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  padding:15px;
-  transition:transform .35s;
-}
-
-.product:hover .product-visual img { transform:scale(1.05); }
-
-.product-visual .placeholder {
-  font-size:70px;
-  opacity:.75;
-}
-
-.favorite {
-  position:absolute;
-  top:12px;
-  right:12px;
-  width:36px;
-  height:36px;
-  border:0;
-  border-radius:50%;
-  background:white;
-  font-size:18px;
-  z-index:2;
-}
-
-.favorite.selected { color:#c45e64; }
-
-.product-info { padding:18px 5px 5px; }
-
-.product-category {
-  color:var(--sage-dark);
-  text-transform:uppercase;
-  font-size:10px;
-  letter-spacing:1.5px;
-  font-weight:700;
-}
-
-.product h3 {
-  font-family:Manrope,sans-serif;
-  font-size:17px;
-  margin-top:8px;
-  letter-spacing:-.4px;
-}
-
-.product-description {
-  color:var(--muted);
-  font-size:12px;
-  margin-top:7px;
-}
-
-.product-bottom {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:19px;
-  gap:10px;
-}
-
-.price {
-  font-size:14px;
-  font-weight:700;
-}
-
-.price small {
-  display:block;
-  font-size:10px;
-  font-weight:400;
-  color:var(--muted);
-  margin-top:3px;
-}
-
-.add-btn {
-  border:0;
-  background:var(--ink);
-  color:white;
-  border-radius:25px;
-  padding:11px 16px;
-  font-size:11px;
-  font-weight:600;
-}
-
-.add-btn:hover { background:var(--green); }
-
-.empty {
-  grid-column:1/-1;
-  text-align:center;
-  background:white;
-  padding:55px 20px;
-  border-radius:20px;
-  color:var(--muted);
-}
-
-/* MODAL */
-
-.overlay {
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:50;
-  background:rgba(24,30,24,.48);
-  backdrop-filter:blur(5px);
-  align-items:center;
-  justify-content:center;
-  padding:15px;
-}
-
-.overlay.show { display:flex; }
-
-.modal {
-  background:white;
-  width:min(460px,100%);
-  border-radius:25px;
-  padding:27px;
-  max-height:90vh;
-  overflow-y:auto;
-  animation:appear .2s ease;
-}
-
-@keyframes appear {
-  from { opacity:0; transform:translateY(12px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-.modal-head {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-}
-
-.modal-head h3 {
-  font-family:Manrope;
-  font-size:22px;
-}
-
-.close {
-  border:0;
-  background:#f0f2ed;
-  width:35px;
-  height:35px;
-  border-radius:50%;
-  font-size:18px;
-}
-
-.modal-product {
-  display:flex;
-  align-items:center;
-  gap:15px;
-  margin-bottom:25px;
-}
-
-.modal-product img {
-  width:85px;
-  height:85px;
-  object-fit:contain;
-  background:#edf1eb;
-  border-radius:15px;
-}
-
-.modal-product strong { font-size:15px; }
-.modal-product small {
-  display:block;
-  color:var(--muted);
-  margin-top:6px;
-}
-
-.field { margin-bottom:18px; }
-
-.field label {
-  display:block;
-  font-size:12px;
-  font-weight:600;
-  margin-bottom:9px;
-}
-
-.field select,.field input {
-  width:100%;
-  border:1px solid var(--line);
-  background:#fafbf8;
-  padding:13px;
-  border-radius:12px;
-  outline:none;
-}
-
-.modal-submit {
-  width:100%;
-  border:0;
-  background:var(--green);
-  color:white;
-  border-radius:14px;
-  padding:16px;
-  font-weight:600;
-}
-
-/* CART */
-
-.drawer-overlay {
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:60;
-  background:rgba(20,25,20,.45);
-}
-
-.drawer-overlay.show { display:block; }
-
-.drawer {
-  position:absolute;
-  right:0;
-  top:0;
-  height:100%;
-  width:min(460px,100%);
-  background:white;
-  padding:25px;
-  display:flex;
-  flex-direction:column;
-  animation:slide .25s ease;
-}
-
-@keyframes slide {
-  from { transform:translateX(100%); }
-  to { transform:translateX(0); }
-}
-
-.drawer-head {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-bottom:20px;
-  border-bottom:1px solid var(--line);
-}
-
-.drawer-head h2 { font-family:Manrope; }
-
-.cart-items {
-  flex:1;
-  overflow-y:auto;
-  padding:18px 0;
-}
-
-.cart-item {
-  display:flex;
-  gap:13px;
-  padding:15px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.cart-thumb {
-  width:75px;
-  height:75px;
-  background:#eef2eb;
-  border-radius:13px;
-  display:grid;
-  place-items:center;
-  font-size:29px;
-  flex-shrink:0;
-}
-
-.cart-info { flex:1; }
-.cart-info strong { font-size:13px; }
-.cart-info small {
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-  margin-top:5px;
-}
-
-.cart-controls {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-top:10px;
-}
-
-.cart-controls button {
-  width:25px;
-  height:25px;
-  border:1px solid var(--line);
-  border-radius:7px;
-  background:white;
-}
-
-.remove {
-  border:0!important;
-  color:#bd7777;
-  margin-left:auto;
-}
-
-.drawer-bottom {
-  border-top:1px solid var(--line);
-  padding-top:20px;
-}
-
-.drawer-bottom p {
-  font-size:12px;
-  color:var(--muted);
-  line-height:1.6;
-  margin-bottom:15px;
-}
-
-.telegram-btn {
-  width:100%;
-  padding:16px;
-  border:0;
-  border-radius:14px;
-  background:#2688c9;
-  color:white;
-  font-weight:700;
-  font-size:14px;
-}
-
-/* FOOTER */
-
-footer {
-  background:#e7ece4;
-  padding:45px 0 25px;
-}
-
-.footer-inner {
-  display:flex;
-  justify-content:space-between;
-  gap:25px;
-  flex-wrap:wrap;
-}
-
-footer .logo { font-size:27px; }
-
-footer p {
-  color:#747e72;
-  font-size:12px;
-  line-height:1.8;
-  margin-top:12px;
-}
-
-.footer-links {
-  display:flex;
-  gap:22px;
-  flex-wrap:wrap;
-  font-size:12px;
-  align-items:center;
-}
-
-.copyright {
-  border-top:1px solid #d6ddd3;
-  margin-top:35px;
-  padding-top:20px;
-  font-size:11px;
-  color:#899185;
-}
-
-/* MOBILE */
-
-@media(max-width:850px) {
-  .nav-links { display:none; }
-  .hero-inner { min-height:390px; }
-  .hero-art {
-    right:-65px;
-    opacity:.5;
-    transform:translateY(-50%) scale(.8);
-  }
-  .hero-copy { max-width:400px; }
-  .products { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .categories { grid-template-columns:repeat(3,1fr); }
-}
-
-@media(max-width:560px) {
-  .container { width:calc(100% - 28px); }
-  .nav { height:65px; }
-  .logo { font-size:22px; }
-  .hero { padding:18px 0 35px; }
-  .hero-inner {
-    min-height:400px;
-    padding:35px 25px;
-    border-radius:24px;
-    align-items:flex-start;
-  }
-  .hero h1 {
-    font-size:47px;
-    letter-spacing:-2px;
-  }
-  .hero-copy p { font-size:13px; max-width:280px; }
-  .hero-art {
-    right:-95px;
-    top:65%;
-    opacity:.32;
-    transform:translateY(-50%) scale(.7);
-  }
-  .benefits {
-    grid-template-columns:1fr;
-    gap:9px;
-    margin-bottom:55px;
-  }
-  .benefit { padding:15px; }
-  .categories {
-    grid-template-columns:repeat(3,1fr);
-    gap:9px;
-  }
-  .category { padding:17px 5px; }
-  .category-icon { font-size:25px; }
-  .category span:last-child { font-size:10px; }
-  .products { gap:10px; }
-  .product { padding:8px; border-radius:17px; }
-  .product-visual { height:155px; }
-  .product-visual .placeholder { font-size:50px; }
-  .product-info { padding:13px 3px 4px; }
-  .product h3 { font-size:14px; }
-  .product-description { font-size:10px; }
-  .product-bottom { align-items:flex-start; flex-direction:column; }
-  .add-btn { width:100%; }
-  .favorite { width:31px;height:31px;font-size:15px; }
-  .filter { flex:1; min-width:120px; }
-  .section { padding-bottom:55px; }
-  .section-heading { margin-bottom:20px; }
-  .section-heading h2 { font-size:28px; }
-  .footer-inner { flex-direction:column; }
+:root{
+ --bg:#eeede7;--white:#f9f8f3;--ink:#292d24;
+ --sage:#929b83;--line:#d9d9cf;--dark:#30372c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1360px,calc(100% - 44px));margin:auto}
+header{position:sticky;top:10px;z-index:20;margin:10px auto -76px;width:min(1320px,calc(100% - 44px));background:#f6f5efdf;backdrop-filter:blur(20px);border:1px solid #fff;border-radius:20px}
+nav{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.logo{font:700 29px 'Playfair Display';letter-spacing:-1.5px}
+.logo span{color:var(--sage)}
+.navlinks{display:flex;gap:28px;font-size:12px}
+.navlinks a:hover{color:var(--sage)}
+.navright{display:flex;gap:10px}
+.round{width:39px;height:39px;border:1px solid var(--line);border-radius:50%;background:transparent;position:relative;font-size:19px}
+.count{position:absolute;right:-4px;top:-4px;background:var(--dark);color:white;border-radius:50%;font-size:9px;min-width:16px;height:16px;display:grid;place-items:center}
+.hero{width:min(1360px,calc(100% - 44px));height:680px;margin:28px auto 0;position:relative;border-radius:13px;overflow:hidden;background:#777}
+.hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.65)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#20241dcc,transparent 85%)}
+.hero-content{position:absolute;z-index:2;left:7%;bottom:12%;color:white}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase}
+.hero h1{font:clamp(75px,12vw,165px)/.82 'Playfair Display';letter-spacing:-7px;margin:22px 0}
+.hero p{max-width:350px;font-size:13px;line-height:1.7;color:#eee}
+.btn{border:0;border-radius:30px;background:#e1e4d8;padding:14px 24px;color:#30372c;font-size:11px;font-weight:600;transition:.2s}
+.btn:hover{transform:translateY(-2px);background:white}
+.btn.dark{background:var(--dark);color:white}
+.btn.dark:hover{background:#64705a}
+.marquee{font:clamp(50px,9vw,120px) 'Playfair Display';color:#a0a795;white-space:nowrap;overflow:hidden;letter-spacing:-5px;padding:25px 0}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:50px;padding:70px 7%}
+.intro h2,.section-title{font:clamp(36px,5vw,65px)/1 'Playfair Display';letter-spacing:-2px;margin:0}
+.intro p{font-size:13px;line-height:1.8;color:#77796f;max-width:390px;align-self:end}
+.section{padding:40px 0 90px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}
+.section-head p{font-size:12px;color:#77796f}
+.tools{display:flex;gap:10px;flex-wrap:wrap}
+.search,.sort{border:1px solid var(--line);background:var(--white);border-radius:30px;padding:12px 17px;font-size:11px;outline:none}
+.search{width:220px}
+.categories{display:flex;gap:9px;overflow:auto;padding-bottom:22px;scrollbar-width:none}
+.category{border:1px solid var(--line);border-radius:30px;padding:10px 17px;background:transparent;white-space:nowrap;font-size:11px}
+.category.active,.category:hover{background:var(--dark);color:white}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.product{background:var(--white);border-radius:12px;overflow:hidden;transition:.25s}
+.product:hover{transform:translateY(-4px);box-shadow:0 15px 35px #00000012}
+.product-photo{height:320px;position:relative;background:#e7e6df}
+.product-photo img{width:100%;height:100%;object-fit:contain;padding:22px}
+.product-tools{position:absolute;top:13px;left:13px;right:13px;display:flex;justify-content:space-between}
+.tag{font-size:9px;letter-spacing:1px;text-transform:uppercase;background:#f9f8f1e8;padding:8px 12px;border-radius:20px}
+.heart{border:0;border-radius:50%;width:35px;height:35px;background:#f9f8f1e8;font-size:18px}
+.heart.active{color:#a34d48}
+.dots{position:absolute;bottom:12px;display:flex;justify-content:center;width:100%;gap:6px}
+.dot{width:6px;height:6px;border:0;border-radius:20px;background:#aaa99f;padding:0}
+.dot.active{width:20px;background:#343a2f}
+.product-info{padding:18px}
+.product-info h3{font:22px 'Playfair Display';margin:0 0 5px}
+.product-info small{font-size:10px;color:#85867c}
+.product-top{display:flex;justify-content:space-between;gap:10px}
+.price{font-size:11px;font-weight:600;white-space:nowrap;padding-top:5px}
+.product-actions{display:flex;gap:8px;margin-top:18px}
+.product-actions button{flex:1;border-radius:30px;padding:11px 5px;font-size:10px}
+.details{background:transparent;border:1px solid var(--line)}
+.add{background:var(--dark);border:0;color:white}
+.add:hover{background:var(--sage)}
+.feature{display:grid;grid-template-columns:1fr 1fr;background:#dce0d3;border-radius:14px;overflow:hidden;margin-bottom:90px}
+.feature img{width:100%;height:100%;min-height:440px;object-fit:cover}
+.feature-text{padding:10%;display:flex;flex-direction:column;justify-content:center}
+.feature-text h2{font:clamp(40px,5vw,70px)/.95 'Playfair Display';margin:20px 0}
+.feature-text p{font-size:12px;line-height:1.8;color:#666b5d;max-width:350px}
+footer{background:var(--dark);color:#f5f4ed;padding:55px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;padding-bottom:45px}
+.footer-logo{font:45px 'Playfair Display'}
+footer p{font-size:11px;color:#c4c9bb;line-height:1.8;max-width:270px}
+footer h4{font-size:10px;letter-spacing:2px;color:#aeb6a2}
+footer a{display:block;font-size:12px;margin:14px 0}
+.copyright{border-top:1px solid #ffffff25;padding-top:20px;font-size:10px;color:#aeb6a2}
+.overlay,.modal{position:fixed;inset:0;background:#161a1590;z-index:50;display:none}
+.overlay.show{display:flex;justify-content:flex-end}
+.drawer{background:var(--white);height:100%;width:min(480px,100%);padding:25px;overflow:auto}
+.drawer-head{display:flex;justify-content:space-between;align-items:center}
+.drawer-head h2{font:34px 'Playfair Display'}
+.close{border:1px solid var(--line);background:transparent;border-radius:50%;width:36px;height:36px;font-size:19px}
+.cart-item{display:grid;grid-template-columns:75px 1fr auto;gap:12px;padding:15px 0;border-bottom:1px solid var(--line);align-items:center}
+.cart-item img{width:75px;height:75px;object-fit:contain;background:#e7e6df;border-radius:8px}
+.cart-item h4{font:17px 'Playfair Display';margin:0 0 6px}
+.cart-item small{font-size:10px;color:#777}
+.qty{display:flex;gap:9px;align-items:center;margin-top:8px}
+.qty button{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;background:transparent}
+.remove{border:0;background:transparent;color:#a45e56;font-size:10px;margin-top:5px}
+.cart-footer{padding-top:22px}
+.cart-footer p{font-size:11px;line-height:1.7;color:#777}
+.cart-footer .btn{width:100%;margin-top:10px}
+.modal.show{display:flex;align-items:center;justify-content:center;padding:15px}
+.modal-card{width:min(850px,100%);max-height:94vh;overflow:auto;background:var(--white);border-radius:13px;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.modal-image{background:#e7e6df;min-height:430px;position:relative}
+.modal-image img{width:100%;height:100%;max-height:570px;object-fit:contain;padding:25px}
+.modal-info{padding:35px 30px}
+.modal-info h2{font:34px 'Playfair Display';margin:8px 0}
+.modal-close{position:absolute;right:12px;top:12px;z-index:2}
+.field{margin-top:20px}
+.field label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#777;margin-bottom:10px}
+.choices{display:flex;gap:7px;flex-wrap:wrap}
+.choice{border:1px solid var(--line);background:transparent;border-radius:25px;padding:9px 12px;font-size:10px}
+.choice.selected{background:var(--dark);color:white}
+.modal-info>.btn{width:100%;margin-top:25px}
+.empty{text-align:center;color:#777;padding:45px 10px;font-size:12px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;background:var(--dark);color:white;padding:13px 22px;border-radius:30px;font-size:11px;z-index:90;transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){
+ .navlinks{display:none}.grid{grid-template-columns:repeat(2,1fr)}
+ .intro{grid-template-columns:1fr;gap:20px}.feature{grid-template-columns:1fr}
+ .feature img{min-height:300px;max-height:390px}
+}
+@media(max-width:560px){
+ .wrap,.hero{width:calc(100% - 24px)}
+ header{width:calc(100% - 24px);top:6px}
+ nav{height:56px;padding:0 14px}.logo{font-size:25px}
+ .hero{height:590px;margin-top:18px}
+ .hero h1{font-size:78px;letter-spacing:-4px}
+ .hero-content{left:7%;bottom:10%}
+ .marquee{font-size:55px}
+ .intro{padding:55px 4% 40px}
+ .section{padding:25px 0 55px}
+ .section-head{display:block}.tools{margin-top:17px}
+ .search{flex:1;width:100%}
+ .grid{gap:9px}
+ .product-photo{height:190px}
+ .product-photo img{padding:12px}
+ .product-info{padding:12px}
+ .product-info h3{font-size:17px}
+ .price{font-size:9px}
+ .product-actions{gap:5px;margin-top:12px}
+ .product-actions button{font-size:9px;padding:10px 3px}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:20px}
+ .footer-grid>div:first-child{grid-column:1/-1}
+ .modal-card{grid-template-columns:1fr}
+ .modal-image{height:260px;min-height:260px}
+ .modal-image img{max-height:260px}
+ .modal-info{padding:22px}
+ .modal-info h2{font-size:28px}
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="container nav">
-    <a href="#" class="logo">apple<span>boom</span>.</a>
-
-    <nav class="nav-links">
-      <a href="#catalog">Каталог</a>
-      <a href="#benefits">О магазине</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-
-    <div class="nav-actions">
-      <button class="icon-btn" onclick="showFavorites()" aria-label="Избранное">♡</button>
-      <button class="icon-btn" onclick="openCart()" aria-label="Корзина">
-        ♧<span class="count" id="cartCount">0</span>
-      </button>
-    </div>
-  </div>
+<nav>
+<a class="logo" href="#top">apple<span>boom</span></a>
+<div class="navlinks">
+<a href="#catalog">Каталог</a>
+<a href="#about">О магазине</a>
+<a href="#order">Заказ</a>
+</div>
+<div class="navright">
+<button class="round" onclick="showFavorites()" aria-label="Избранное">♡<span class="count" id="favCount">0</span></button>
+<button class="round" onclick="openCart()" aria-label="Корзина">▢<span class="count" id="cartCount">0</span></button>
+</div>
+</nav>
 </header>
 
-<main>
-  <section class="hero container">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <div class="eyebrow">Technology, beautifully.</div>
-        <h1>Технологии<br>с <span>характером.</span></h1>
-        <p>
-          Любимые устройства. Продуманный выбор.
-          Техника, которая делает каждый день лучше.
-        </p>
-        <a class="primary-btn" href="#catalog">Открыть каталог <span>↗</span></a>
-      </div>
-      <div class="hero-art">
-        <div class="hero-orb"></div>
-        <div class="hero-device"></div>
-      </div>
-    </div>
-  </section>
+<main id="top">
+<section class="hero">
+<img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=2000&q=90" alt="Apple Boom">
+<div class="hero-content">
+<div class="eyebrow">Technology / Lifestyle / Design</div>
+<h1>apple<br>boom.</h1>
+<p>Технологии, которые становятся частью твоего стиля. Выбирай своё устройство и оформляй заявку в пару касаний.</p>
+<button class="btn" onclick="document.querySelector('#catalog').scrollIntoView({behavior:'smooth'})">Смотреть каталог ↗</button>
+</div>
+</section>
 
-  <section class="container benefits" id="benefits">
-    <div class="benefit">
-      <div class="benefit-icon">✧</div>
-      <div><strong>Индивидуальный подбор</strong><small>Подберём устройство под твои задачи</small></div>
-    </div>
-    <div class="benefit">
-      <div class="benefit-icon">♡</div>
-      <div><strong>Внимание к деталям</strong><small>Цвет, память и состояние на выбор</small></div>
-    </div>
-    <div class="benefit">
-      <div class="benefit-icon">↗</div>
-      <div><strong>Удобный заказ</strong><small>Заявка напрямую в Telegram</small></div>
-    </div>
-  </section>
+<div class="marquee">Technology meets your style — apple boom —</div>
 
-  <section class="container section" id="catalog">
-    <div class="section-heading">
-      <div>
-        <div class="eyebrow">Discover your technology</div>
-        <h2>Каталог устройств</h2>
-        <p>Выбери то, что подходит именно тебе.</p>
-      </div>
-    </div>
+<section class="intro" id="about">
+<h2>Техника, которую хочется выбирать.</h2>
+<p>Только актуальные устройства, удобный выбор параметров и оформление заказа напрямую через Telegram. Без лишних шагов.</p>
+</section>
 
-    <div class="categories" id="categories">
-      <button class="category active" onclick="setCategory('Все')"><span class="category-icon">✧</span><span>Всё</span></button>
-      <button class="category" onclick="setCategory('iPhone')"><span class="category-icon">▯</span><span>iPhone</span></button>
-      <button class="category" onclick="setCategory('Mac')"><span class="category-icon">▱</span><span>Mac</span></button>
-      <button class="category" onclick="setCategory('iPad')"><span class="category-icon">▣</span><span>iPad</span></button>
-      <button class="category" onclick="setCategory('Watch')"><span class="category-icon">◷</span><span>Watch</span></button>
-      <button class="category" onclick="setCategory('AirPods')"><span class="category-icon">♫</span><span>AirPods</span></button>
-      <button class="category" onclick="setCategory('PlayStation')"><span class="category-icon">🎮</span><span>PlayStation</span></button>
-      <button class="category" onclick="setCategory('Android')"><span class="category-icon">◈</span><span>Android</span></button>
-      <button class="category" onclick="setCategory('Аксессуары')"><span class="category-icon">◇</span><span>Аксессуары</span></button>
-    </div>
+<section class="section wrap" id="catalog">
+<div class="section-head">
+<div>
+<h2 class="section-title">Каталог</h2>
+<p>Выбери своё устройство</p>
+</div>
+<div class="tools">
+<input class="search" id="search" placeholder="Поиск техники..." oninput="render()">
+<select class="sort" id="sort" onchange="render()">
+<option value="default">Популярное</option>
+<option value="az">По названию</option>
+</select>
+</div>
+</div>
+<div class="categories" id="categories"></div>
+<div class="grid" id="products"></div>
+</section>
 
-    <div class="catalog-tools">
-      <input class="search" id="search" type="search" placeholder="⌕  Найти устройство..." oninput="renderProducts()">
-      <select class="filter" id="sort" onchange="renderProducts()">
-        <option value="default">Сначала популярные</option>
-        <option value="az">По названию А–Я</option>
-        <option value="za">По названию Я–А</option>
-      </select>
-      <select class="filter" id="conditionFilter" onchange="renderProducts()">
-        <option value="all">Все состояния</option>
-        <option value="Новый">Новые</option>
-        <option value="Б/у">Б/у</option>
-      </select>
-    </div>
-
-    <div class="products" id="products"></div>
-  </section>
+<section class="feature wrap" id="order">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=85" alt="MacBook">
+<div class="feature-text">
+<div class="eyebrow">Apple Boom / Easy order</div>
+<h2>Твой выбор.<br>Твой заказ.</h2>
+<p>Добавь устройства в корзину, выбери память, цвет и состояние. Мы подготовим готовое сообщение — тебе останется отправить его в Telegram.</p>
+<button class="btn dark" onclick="openCart()">Перейти в корзину ↗</button>
+</div>
+</section>
 </main>
 
-<footer id="contacts">
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <div class="logo">apple<span>boom</span>.</div>
-        <p>Technology, beautifully.<br>Техника, которую выбирают с удовольствием.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#catalog">Каталог</a>
-        <a href="https://t.me/Wagapapa21" target="_blank" rel="noopener">Telegram</a>
-        <a href="#benefits">О магазине</a>
-      </div>
-    </div>
-    <div class="copyright">© 2026 Apple Boom. Все права защищены.</div>
-  </div>
+<footer>
+<div class="wrap">
+<div class="footer-grid">
+<div>
+<div class="footer-logo">appleboom.</div>
+<p>Техника и аксессуары. Подбор устройств и оформление заказа в Telegram.</p>
+</div>
+<div>
+<h4>НАВИГАЦИЯ</h4>
+<a href="#catalog">Каталог</a>
+<a href="#about">О магазине</a>
+<a href="#order">Как заказать</a>
+</div>
+<div>
+<h4>СВЯЗЬ</h4>
+<a href="https://t.me/Wagapapa21" target="_blank">Telegram ↗</a>
+</div>
+</div>
+<div class="copyright">© 2026 Apple Boom. All rights reserved.</div>
+</div>
 </footer>
 
-<!-- PRODUCT MODAL -->
-<div class="overlay" id="productOverlay" onclick="if(event.target===this)closeProduct()">
-  <div class="modal">
-    <div class="modal-head">
-      <h3>Настрой устройство</h3>
-      <button class="close" onclick="closeProduct()">×</button>
-    </div>
-    <div class="modal-product">
-      <img id="modalImage" src="" alt="Выбранное устройство">
-      <div><strong id="modalName"></strong><small>Apple Boom · индивидуальный заказ</small></div>
-    </div>
-
-    <div class="field">
-      <label>Память / комплектация</label>
-      <select id="memory">
-        <option>Не имеет значения</option>
-        <option>128 ГБ</option>
-        <option>256 ГБ</option>
-        <option>512 ГБ</option>
-        <option>1 ТБ</option>
-        <option>2 ТБ</option>
-        <option>Другой вариант / уточнить</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Цвет</label>
-      <select id="color">
-        <option>Любой цвет</option>
-        <option>Чёрный</option>
-        <option>Белый</option>
-        <option>Серебристый</option>
-        <option>Титановый</option>
-        <option>Натуральный титан</option>
-        <option>Золотой</option>
-        <option>Синий</option>
-        <option>Зелёный</option>
-        <option>Розовый</option>
-        <option>Фиолетовый</option>
-        <option>Другой / уточнить</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Состояние</label>
-      <select id="condition">
-        <option>Новый</option>
-        <option>Б/у</option>
-        <option>Рассмотреть оба варианта</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Количество</label>
-      <input id="quantity" type="number" min="1" max="20" value="1">
-    </div>
-
-    <button class="modal-submit" onclick="addToCart()">Добавить в корзину ↗</button>
-  </div>
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()">
+<aside class="drawer">
+<div class="drawer-head">
+<h2>Корзина</h2>
+<button class="close" onclick="closeCart()">×</button>
+</div>
+<div id="cartItems"></div>
+<div class="cart-footer" id="cartFooter"></div>
+</aside>
 </div>
 
-<!-- CART DRAWER -->
-<div class="drawer-overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()">
-  <div class="drawer">
-    <div class="drawer-head">
-      <h2>Твоя корзина</h2>
-      <button class="close" onclick="closeCart()">×</button>
-    </div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="drawer-bottom">
-      <p>Цена, наличие и доставка уточняются при оформлении заказа в Telegram.</p>
-      <button class="telegram-btn" onclick="checkout()">Оформить заказ в Telegram ↗</button>
-    </div>
-  </div>
+<div class="modal" id="productModal" onclick="if(event.target===this)closeModal()">
+<div class="modal-card">
+<button class="close modal-close" onclick="closeModal()">×</button>
+<div class="modal-image">
+<img id="modalImage" src="" alt="">
+<div class="dots" id="modalDots"></div>
 </div>
+<div class="modal-info">
+<div class="eyebrow">Apple Boom / Product</div>
+<h2 id="modalTitle"></h2>
+<p id="modalSub" style="font-size:11px;color:#777"></p>
+<div class="field">
+<label>Память / версия</label>
+<div class="choices" id="memoryChoices"></div>
+</div>
+<div class="field">
+<label>Цвет</label>
+<div class="choices" id="colorChoices"></div>
+</div>
+<div class="field">
+<label>Состояние</label>
+<div class="choices" id="conditionChoices"></div>
+</div>
+<div class="field">
+<label>Количество</label>
+<div class="choices">
+<button class="choice" onclick="changeQty(-1)">−</button>
+<span id="modalQty" style="padding:9px">1</span>
+<button class="choice" onclick="changeQty(1)">+</button>
+</div>
+</div>
+<button class="btn dark" onclick="addToCart()">Добавить в корзину</button>
+</div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-/* =================================
-   APPLE BOOM — НАСТРОЙКИ МАГАЗИНА
-================================= */
+/* ФОТОГРАФИИ */
+const photos={
+ iphone18:[
+ 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-18-pro-202609?fmt=png-alpha&hei=900&wid=700',
+ 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=85'],
+ iphone17:[
+ 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=85'],
+ iphone16:[
+ 'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1603891128711-11b4b03bb138?auto=format&fit=crop&w=900&q=85'],
+ duo:[
+ 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=900&q=85'],
+ mac:[
+ 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1496190342181-978d1f35f0b8?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1511385348-a52b4a160dc2?auto=format&fit=crop&w=900&q=85'],
+ ipad:[
+ 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1589739900243-4b52cd9dd8df?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1561156262-861b3a9b2f7a?auto=format&fit=crop&w=900&q=85'],
+ watch:[
+ 'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1508685096489-7f6cfb4a5c1b?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&fit=crop&w=900&q=85'],
+ airpods:[
+ 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1603351154351-5e2d0600bb77?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?auto=format&fit=crop&w=900&q=85'],
+ ps:[
+ 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1607853202273-797f1c22a38e?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=900&q=85'],
+ samsung:[
+ 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=85',
+ 'https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=900&q=85']
+};
 
-const TELEGRAM_USERNAME = "Wagapapa21";
-
-/*
-  Здесь можно добавлять и редактировать товары.
-  Цены намеренно не указаны: они уточняются в Telegram.
-  Для фото укажи прямую ссылку на изображение конкретного товара.
-*/
-
-const productsData = [
-  // IPHONE 18
-  {id:1,name:"iPhone 18",category:"iPhone",description:"Новое поколение iPhone",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ"]},
-  {id:2,name:"iPhone 18 Pro",category:"iPhone",description:"Профессиональная линейка",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ","1 ТБ"]},
-  {id:3,name:"iPhone 18 Pro Max",category:"iPhone",description:"Максимальные возможности",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ","1 ТБ","2 ТБ"]},
-
-  // IPHONE 17
-  {id:4,name:"iPhone 17",category:"iPhone",description:"Современный iPhone",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ"]},
-  {id:5,name:"iPhone 17 Air",category:"iPhone",description:"Тонкий и лёгкий дизайн",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ","1 ТБ"]},
-  {id:6,name:"iPhone 17 Pro",category:"iPhone",description:"Мощность и профессиональная камера",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ","1 ТБ"]},
-  {id:7,name:"iPhone 17 Pro Max",category:"iPhone",description:"Флагманская модель",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ","1 ТБ","2 ТБ"]},
-
-  // IPHONE 16
-  {id:8,name:"iPhone 16",category:"iPhone",description:"Универсальный смартфон",emoji:"📱",image:"",memory:["128 ГБ","256 ГБ","512 ГБ"]},
-  {id:9,name:"iPhone 16 Plus",category:"iPhone",description:"Большой экран и автономность",emoji:"📱",image:"",memory:["128 ГБ","256 ГБ","512 ГБ"]},
-  {id:10,name:"iPhone 16 Pro",category:"iPhone",description:"Профессиональная серия",emoji:"📱",image:"",memory:["128 ГБ","256 ГБ","512 ГБ","1 ТБ"]},
-  {id:11,name:"iPhone 16 Pro Max",category:"iPhone",description:"Максимальный формат",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ","1 ТБ"]},
-  {id:12,name:"iPhone 16e",category:"iPhone",description:"Практичный выбор",emoji:"📱",image:"",memory:["128 ГБ","256 ГБ","512 ГБ"]},
-
-  // MAC
-  {id:13,name:"MacBook Air",category:"Mac",description:"Лёгкий ноутбук для работы и учёбы",emoji:"💻",image:"",memory:["256 ГБ","512 ГБ","1 ТБ","2 ТБ"]},
-  {id:14,name:"MacBook Pro",category:"Mac",description:"Профессиональная производительность",emoji:"💻",image:"",memory:["512 ГБ","1 ТБ","2 ТБ","4 ТБ"]},
-  {id:15,name:"iMac",category:"Mac",description:"Настольный компьютер Apple",emoji:"🖥️",image:"",memory:["256 ГБ","512 ГБ","1 ТБ"]},
-  {id:16,name:"Mac mini",category:"Mac",description:"Компактный настольный компьютер",emoji:"▣",image:"",memory:["256 ГБ","512 ГБ","1 ТБ"]},
-
-  // IPAD
-  {id:17,name:"iPad",category:"iPad",description:"Универсальный планшет",emoji:"▣",image:"",memory:["128 ГБ","256 ГБ","512 ГБ"]},
-  {id:18,name:"iPad Air",category:"iPad",description:"Мощность и мобильность",emoji:"▣",image:"",memory:["128 ГБ","256 ГБ","512 ГБ","1 ТБ"]},
-  {id:19,name:"iPad Pro",category:"iPad",description:"Профессиональный планшет",emoji:"▣",image:"",memory:["256 ГБ","512 ГБ","1 ТБ","2 ТБ"]},
-  {id:20,name:"iPad mini",category:"iPad",description:"Компактный формат",emoji:"▣",image:"",memory:["128 ГБ","256 ГБ","512 ГБ"]},
-
-  // WATCH
-  {id:21,name:"Apple Watch SE",category:"Watch",description:"Умные часы на каждый день",emoji:"⌚",image:"",memory:["GPS","GPS + Cellular"]},
-  {id:22,name:"Apple Watch Series",category:"Watch",description:"Современные Apple Watch",emoji:"⌚",image:"",memory:["GPS","GPS + Cellular"]},
-  {id:23,name:"Apple Watch Ultra",category:"Watch",description:"Для спорта и приключений",emoji:"⌚",image:"",memory:["GPS + Cellular"]},
-
-  // AIRPODS
-  {id:24,name:"AirPods 4",category:"AirPods",description:"Беспроводные наушники",emoji:"🎧",image:"",memory:["Стандартная версия","С шумоподавлением"]},
-  {id:25,name:"AirPods Pro",category:"AirPods",description:"Премиальный звук и комфорт",emoji:"🎧",image:"",memory:["Стандартная комплектация"]},
-  {id:26,name:"AirPods Max",category:"AirPods",description:"Полноразмерные наушники",emoji:"🎧",image:"",memory:["Стандартная комплектация"]},
-
-  // PLAYSTATION
-  {id:27,name:"PlayStation 5 Slim",category:"PlayStation",description:"Игровая консоль Sony",emoji:"🎮",image:"",memory:["С дисководом","Digital Edition"]},
-  {id:28,name:"PlayStation 5 Pro",category:"PlayStation",description:"Мощная игровая консоль",emoji:"🎮",image:"",memory:["Стандартная комплектация"]},
-  {id:29,name:"DualSense",category:"PlayStation",description:"Беспроводной контроллер",emoji:"🎮",image:"",memory:["Стандартная версия"]},
-
-  // ANDROID
-  {id:30,name:"Samsung Galaxy S",category:"Android",description:"Флагманская линейка Samsung",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ","1 ТБ"]},
-  {id:31,name:"Samsung Galaxy Z Fold",category:"Android",description:"Складной смартфон",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ","1 ТБ"]},
-  {id:32,name:"Samsung Galaxy Z Flip",category:"Android",description:"Компактный складной смартфон",emoji:"📱",image:"",memory:["256 ГБ","512 ГБ"]},
-  {id:33,name:"Xiaomi",category:"Android",description:"Смартфоны Xiaomi",emoji:"📱",image:"",memory:["128 ГБ","256 ГБ","512 ГБ","1 ТБ"]},
-  {id:34,name:"Google Pixel",category:"Android",description:"Смартфоны Google",emoji:"📱",image:"",memory:["128 ГБ","256 ГБ","512 ГБ"]},
-
-  // ACCESSORIES
-  {id:35,name:"Apple Pencil",category:"Аксессуары",description:"Стилус для iPad",emoji:"✏️",image:"",memory:["USB-C","Pro"]},
-  {id:36,name:"Magic Keyboard",category:"Аксессуары",description:"Клавиатура Apple",emoji:"⌨️",image:"",memory:["Для iPad","Для Mac"]},
-  {id:37,name:"AirTag",category:"Аксессуары",description:"Трекер для личных вещей",emoji:"◉",image:"",memory:["1 шт.","4 шт."]}
+/* КАТАЛОГ */
+const products=[
+{id:'18pm',name:'iPhone 18 Pro Max',cat:'iPhone',tag:'NEW',desc:'Максимум возможностей',photos:'iphone18',memory:['256 ГБ','512 ГБ','1 ТБ','2 ТБ'],colors:['Бордовый','Чёрный','Серебристый','Полярный'],conditions:['Новый','Б/у']},
+{id:'18p',name:'iPhone 18 Pro',cat:'iPhone',tag:'NEW',desc:'Pro в каждой детали',photos:'iphone18',memory:['256 ГБ','512 ГБ','1 ТБ','2 ТБ'],colors:['Бордовый','Чёрный','Серебристый','Полярный'],conditions:['Новый','Б/у']},
+{id:'duo',name:'iPhone Duo',cat:'iPhone',tag:'NEW',desc:'Новый формат iPhone',photos:'duo',memory:['256 ГБ','512 ГБ','1 ТБ'],colors:['Ночной','Серебристый'],conditions:['Новый']},
+{id:'17pm',name:'iPhone 17 Pro Max',cat:'iPhone',tag:'POPULAR',desc:'Большой экран. Большие возможности',photos:'iphone17',memory:['256 ГБ','512 ГБ','1 ТБ'],colors:['Оранжевый','Синий','Серебристый'],conditions:['Новый','Б/у']},
+{id:'17',name:'iPhone 17',cat:'iPhone',tag:'BESTSELLER',desc:'На каждый день',photos:'iphone17',memory:['256 ГБ','512 ГБ'],colors:['Чёрный','Белый','Голубой','Зелёный','Розовый'],conditions:['Новый','Б/у']},
+{id:'16',name:'iPhone 16',cat:'iPhone',tag:'CHOICE',desc:'Проверенная классика',photos:'iphone16',memory:['128 ГБ','256 ГБ','512 ГБ'],colors:['Чёрный','Белый','Розовый','Бирюзовый'],conditions:['Новый','Б/у']},
+{id:'mbp',name:'MacBook Pro',cat:'Mac',tag:'PRO',desc:'Мощность без компромиссов',photos:'mac',memory:['512 ГБ','1 ТБ','2 ТБ'],colors:['Чёрный','Серебристый'],conditions:['Новый','Б/у']},
+{id:'mba',name:'MacBook Air',cat:'Mac',tag:'LIGHT',desc:'Тонкий. Лёгкий. Быстрый.',photos:'mac',memory:['256 ГБ','512 ГБ','1 ТБ'],colors:['Синий','Серебристый','Звёздный свет'],conditions:['Новый','Б/у']},
+{id:'mini',name:'Mac mini',cat:'Mac',tag:'COMPACT',desc:'Большие возможности в малом корпусе',photos:'mac',memory:['256 ГБ','512 ГБ','1 ТБ'],colors:['Серебристый'],conditions:['Новый']},
+{id:'ipadpro',name:'iPad Pro',cat:'iPad',tag:'PRO',desc:'Для идей без границ',photos:'ipad',memory:['256 ГБ','512 ГБ','1 ТБ','2 ТБ'],colors:['Чёрный','Серебристый'],conditions:['Новый','Б/у']},
+{id:'ipadair',name:'iPad Air',cat:'iPad',tag:'EVERYDAY',desc:'Для учёбы, работы и творчества',photos:'ipad',memory:['128 ГБ','256 ГБ','512 ГБ'],colors:['Синий','Фиолетовый','Серый'],conditions:['Новый','Б/у']},
+{id:'watch',name:'Apple Watch Series 12',cat:'Watch',tag:'NEW',desc:'Твой день под контролем',photos:'watch',memory:['42 мм','46 мм'],colors:['Чёрный','Серебристый','Золотой'],conditions:['Новый']},
+{id:'ultra',name:'Apple Watch Ultra 4',cat:'Watch',tag:'ULTRA',desc:'Больше свободы',photos:'watch',memory:['49 мм'],colors:['Натуральный титан','Чёрный титан'],conditions:['Новый']},
+{id:'airpods5',name:'AirPods 5',cat:'Audio',tag:'NEW',desc:'Звук, который всегда с тобой',photos:'airpods',memory:['Стандарт'],colors:['Белый'],conditions:['Новый']},
+{id:'airpodpro',name:'AirPods Pro 3',cat:'Audio',tag:'POPULAR',desc:'Тишина по твоему желанию',photos:'airpods',memory:['Стандарт'],colors:['Белый'],conditions:['Новый']},
+{id:'ps5',name:'PlayStation 5 Pro',cat:'Gaming',tag:'GAMING',desc:'Играй на новом уровне',photos:'ps',memory:['2 ТБ'],colors:['Белый'],conditions:['Новый']},
+{id:'samsung',name:'Samsung Galaxy Ultra',cat:'Android',tag:'ANDROID',desc:'Флагманская мощность',photos:'samsung',memory:['256 ГБ','512 ГБ','1 ТБ'],colors:['Чёрный','Серебристый','Фиолетовый'],conditions:['Новый','Б/у']}
 ];
 
-let activeCategory = "Все";
-let selectedProduct = null;
-let cart = JSON.parse(localStorage.getItem("appleboom_cart") || "[]");
-let favorites = JSON.parse(localStorage.getItem("appleboom_fav") || "[]");
-let favoritesOnly = false;
+let category='Все';
+let favorites=new Set();
+let cart=[];
+let current=null;
+let config={};
 
-/* PRODUCTS */
+const el=id=>document.getElementById(id);
+const categoryNames=['Все','iPhone','Mac','iPad','Watch','Audio','Gaming','Android'];
 
-function renderProducts() {
-  const search = document.getElementById("search").value.toLowerCase().trim();
-  const condition = document.getElementById("conditionFilter").value;
-  const sort = document.getElementById("sort").value;
-
-  let list = productsData.filter(p => {
-    const matchesCategory = activeCategory === "Все" || p.category === activeCategory;
-    const matchesSearch = p.name.toLowerCase().includes(search) ||
-      p.category.toLowerCase().includes(search);
-    const matchesFavorite = !favoritesOnly || favorites.includes(p.id);
-    return matchesCategory && matchesSearch && matchesFavorite;
-  });
-
-  if (sort === "az") list.sort((a,b)=>a.name.localeCompare(b.name));
-  if (sort === "za") list.sort((a,b)=>b.name.localeCompare(a.name));
-
-  const root = document.getElementById("products");
-
-  if (!list.length) {
-    root.innerHTML = '<div class="empty">Пока ничего не найдено.<br><br>Попробуй изменить поиск или категорию.</div>';
-    return;
-  }
-
-  root.innerHTML = list.map(p => `
-    <article class="product">
-      <button class="favorite ${favorites.includes(p.id)?"selected":""}"
-        onclick="toggleFavorite(${p.id})" aria-label="Добавить в избранное">
-        ${favorites.includes(p.id)?"♥":"♡"}
-      </button>
-
-      <div class="product-visual">
-        ${p.image
-          ? `<img src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
-          : ""}
-        <span class="placeholder" style="${p.image?'display:none':''}">${p.emoji}</span>
-      </div>
-
-      <div class="product-info">
-        <div class="product-category">${p.category}</div>
-        <h3>${p.name}</h3>
-        <div class="product-description">${p.description}</div>
-        <div class="product-bottom">
-          <div class="price">По запросу<small>Стоимость уточняется</small></div>
-          <button class="add-btn" onclick="openProduct(${p.id})">Выбрать ↗</button>
-        </div>
-      </div>
-    </article>
-  `).join("");
+function notify(text){
+ el('toast').textContent=text;
+ el('toast').classList.add('show');
+ setTimeout(()=>el('toast').classList.remove('show'),2000);
 }
 
-function setCategory(category) {
-  activeCategory = category;
-  favoritesOnly = false;
+function renderCategories(){
+ el('categories').innerHTML=categoryNames.map(c=>
+ `<button class="category ${category===c?'active':''}" onclick="setCategory('${c}')">${c==='Audio'?'Аудио':c==='Gaming'?'Игровые':c}</button>`
+ ).join('');
+}
+function setCategory(c){category=c;renderCategories();render()}
 
-  document.querySelectorAll(".category").forEach(b=>b.classList.remove("active"));
-  const buttons = [...document.querySelectorAll(".category")];
-  const index = ["Все","iPhone","Mac","iPad","Watch","AirPods","PlayStation","Android","Аксессуары"].indexOf(category);
-  if (buttons[index]) buttons[index].classList.add("active");
+function render(){
+ const q=el('search').value.toLowerCase().trim();
+ let list=products.filter(p=>
+ (category==='Все'||p.cat===category)&&
+ (!favoriteMode||favorites.has(p.id))&&
+ (p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q))
+ );
+ if(el('sort').value==='az')list.sort((a,b)=>a.name.localeCompare(b.name,'ru'));
 
-  renderProducts();
-  document.getElementById("catalog").scrollIntoView({behavior:"smooth"});
+ el('products').innerHTML=list.length?list.map(p=>{
+ const pics=photos[p.photos];
+ return `<article class="product">
+ <div class="product-photo">
+ <img id="photo-${p.id}" src="${pics[0]}" alt="${p.name}" loading="lazy">
+ <div class="product-tools">
+ <span class="tag">${p.tag}</span>
+ <button class="heart ${favorites.has(p.id)?'active':''}" onclick="toggleFavorite('${p.id}')">${favorites.has(p.id)?'♥':'♡'}</button>
+ </div>
+ <div class="dots">${pics.map((_,i)=>`<button class="dot ${i===0?'active':''}" onclick="cardPhoto('${p.id}',${i},this)"></button>`).join('')}</div>
+ </div>
+ <div class="product-info">
+ <div class="product-top">
+ <div><h3>${p.name}</h3><small>${p.desc}</small></div>
+ <div class="price">По запросу</div>
+ </div>
+ <div class="product-actions">
+ <button class="details" onclick="openProduct('${p.id}')">Подробнее</button>
+ <button class="add" onclick="openProduct('${p.id}')">Выбрать +</button>
+ </div>
+ </div>
+ </article>`;
+ }).join(''):'<div class="empty" style="grid-column:1/-1">Ничего не найдено</div>';
+}
+let favoriteMode=false;
+function toggleFavorite(id){
+ favorites.has(id)?favorites.delete(id):favorites.add(id);
+ el('favCount').textContent=favorites.size;
+ render();
+}
+function showFavorites(){
+ favoriteMode=!favoriteMode;
+ category='Все';
+ renderCategories();
+ render();
+ el('catalog').scrollIntoView({behavior:'smooth'});
+ notify(favoriteMode?'Избранное':'Весь каталог');
+}
+function cardPhoto(id,i,button){
+ const p=products.find(x=>x.id===id);
+ el('photo-'+id).src=photos[p.photos][i];
+ button.parentElement.querySelectorAll('.dot').forEach(x=>x.classList.remove('active'));
+ button.classList.add('active');
 }
 
-/* FAVORITES */
+function openProduct(id){
+ current=products.find(x=>x.id===id);
+ config={memory:current.memory[0],color:current.colors[0],condition:current.conditions[0],qty:1,photo:0};
+ el('modalTitle').textContent=current.name;
+ el('modalSub').textContent=current.desc;
+ el('modalImage').src=photos[current.photos][0];
+ el('modalDots').innerHTML=photos[current.photos].map((_,i)=>`<button class="dot ${i===0?'active':''}" onclick="modalPhoto(${i})"></button>`).join('');
+ renderChoices();
+ el('modalQty').textContent='1';
+ el('productModal').classList.add('show');
+}
+function renderChoices(){
+ [['memoryChoices','memory','memory'],['colorChoices','colors','color'],['conditionChoices','conditions','condition']].forEach(([id,source,key])=>{
+ el(id).innerHTML=current[source].map(v=>`<button class="choice ${config[key]===v?'selected':''}" onclick="selectOption('${key}','${v}')">${v}</button>`).join('');
+ });
+}
+function selectOption(key,value){config[key]=value;renderChoices()}
+function modalPhoto(i){
+ config.photo=i;
+ el('modalImage').src=photos[current.photos][i];
+ el('modalDots').querySelectorAll('.dot').forEach((d,n)=>d.classList.toggle('active',n===i));
+}
+function changeQty(n){
+ config.qty=Math.max(1,Math.min(10,config.qty+n));
+ el('modalQty').textContent=config.qty;
+}
+function closeModal(){el('productModal').classList.remove('show')}
 
-function toggleFavorite(id) {
-  favorites = favorites.includes(id)
-    ? favorites.filter(x=>x!==id)
-    : [...favorites,id];
+function addToCart(){
+ cart.push({
+ id:current.id,name:current.name,
+ photo:photos[current.photos][0],
+ memory:config.memory,color:config.color,
+ condition:config.condition,qty:config.qty
+ });
+ updateCount();
+ closeModal();
+ notify('Добавлено в корзину');
+}
+function updateCount(){
+ el('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0);
+}
+function openCart(){el('cartOverlay').classList.add('show');renderCart()}
+function closeCart(){el('cartOverlay').classList.remove('show')}
 
-  localStorage.setItem("appleboom_fav",JSON.stringify(favorites));
-  renderProducts();
+function renderCart(){
+ if(!cart.length){
+ el('cartItems').innerHTML='<div class="empty">Корзина пока пуста.<br>Выбери устройство в каталоге.</div>';
+ el('cartFooter').innerHTML='<button class="btn dark" onclick="closeCart();document.querySelector(\\'#catalog\\').scrollIntoView({behavior:\\'smooth\\'})">Перейти в каталог</button>';
+ return;
+ }
+ el('cartItems').innerHTML=cart.map((x,i)=>`
+ <div class="cart-item">
+ <img src="${x.photo}" alt="${x.name}">
+ <div>
+ <h4>${x.name}</h4>
+ <small>${x.memory} · ${x.color} · ${x.condition}</small>
+ <div class="qty">
+ <button onclick="cartQty(${i},-1)">−</button>
+ <span>${x.qty}</span>
+ <button onclick="cartQty(${i},1)">+</button>
+ </div>
+ <button class="remove" onclick="removeItem(${i})">Удалить</button>
+ </div>
+ <small>По запросу</small>
+ </div>`).join('');
+ el('cartFooter').innerHTML=`
+ <p>Проверь выбранные параметры. Нажми кнопку — Telegram откроется с готовым текстом заявки.</p>
+ <button class="btn dark" onclick="sendOrder()">Оформить заказ в Telegram ↗</button>
+ <button class="btn" style="width:100%;margin-top:8px" onclick="closeCart()">Продолжить покупки</button>`;
+}
+function cartQty(i,n){cart[i].qty=Math.max(1,Math.min(10,cart[i].qty+n));updateCount();renderCart()}
+function removeItem(i){cart.splice(i,1);updateCount();renderCart()}
+
+function sendOrder(){
+ if(!cart.length){notify('Корзина пуста');return}
+ const items=cart.map((x,i)=>
+ `${i+1}. ${x.name}\nПамять/версия: ${x.memory}\nЦвет: ${x.color}\nСостояние: ${x.condition}\nКоличество: ${x.qty}`
+ ).join('\n\n');
+ const message=`Здравствуйте! Хочу оформить заказ в Apple Boom:\n\n${items}\n\nПодскажите, пожалуйста, наличие, стоимость и условия доставки.`;
+ window.open('https://t.me/Wagapapa21?text='+encodeURIComponent(message),'_blank');
 }
 
-function showFavorites() {
-  favoritesOnly = !favoritesOnly;
-  activeCategory = "Все";
-  document.querySelectorAll(".category").forEach(b=>b.classList.remove("active"));
-  if (!favoritesOnly) document.querySelector(".category").classList.add("active");
-  renderProducts();
-  document.getElementById("catalog").scrollIntoView({behavior:"smooth"});
-}
-
-/* PRODUCT MODAL */
-
-function openProduct(id) {
-  selectedProduct = productsData.find(p=>p.id===id);
-  if (!selectedProduct) return;
-
-  document.getElementById("modalName").textContent = selectedProduct.name;
-  const img = document.getElementById("modalImage");
-  img.src = selectedProduct.image || "";
-  img.style.display = selectedProduct.image ? "block" : "none";
-
-  const memory = document.getElementById("memory");
-  memory.innerHTML = selectedProduct.memory.map(m=>`<option>${m}</option>`).join("");
-
-  document.getElementById("color").value = "Любой цвет";
-  document.getElementById("condition").value = "Новый";
-  document.getElementById("quantity").value = 1;
-  document.getElementById("productOverlay").classList.add("show");
-}
-
-function closeProduct() {
-  document.getElementById("productOverlay").classList.remove("show");
-}
-
-/* CART */
-
-function saveCart() {
-  localStorage.setItem("appleboom_cart",JSON.stringify(cart));
-  updateCartCount();
-}
-
-function updateCartCount() {
-  document.getElementById("cartCount").textContent =
-    cart.reduce((sum,item)=>sum+item.quantity,0);
-}
-
-function addToCart() {
-  if (!selectedProduct) return;
-
-  const quantity = Math.max(1,Math.min(20,parseInt(document.getElementById("quantity").value)||1));
-
-  const item = {
-    id:selectedProduct.id,
-    name:selectedProduct.name,
-    memory:document.getElementById("memory").value,
-    color:document.getElementById("color").value,
-    condition:document.getElementById("condition").value,
-    quantity
-  };
-
-  const existing = cart.find(x =>
-    x.id===item.id &&
-    x.memory===item.memory &&
-    x.color===item.color &&
-    x.condition===item.condition
-  );
-
-  if (existing) existing.quantity += quantity;
-  else cart.push(item);
-
-  saveCart();
-  closeProduct();
-  renderCart();
-  openCart();
-}
-
-function renderCart() {
-  const root = document.getElementById("cartItems");
-
-  if (!cart.length) {
-    root.innerHTML = '<div class="empty">Твоя корзина пока пуста.<br><br>Выбери устройство в каталоге.</div>';
-    return;
-  }
-
-  root.innerHTML = cart.map((item,index)=>`
-    <div class="cart-item">
-      <div class="cart-thumb">📱</div>
-      <div class="cart-info">
-        <strong>${item.name}</strong>
-        <small>Память: ${item.memory}</small>
-        <small>Цвет: ${item.color}</small>
-        <small>Состояние: ${item.condition}</small>
-        <div class="cart-controls">
-          <button onclick="changeQuantity(${index},-1)">−</button>
-          <span>${item.quantity}</span>
-          <button onclick="changeQuantity(${index},1)">+</button>
-          <button class="remove" onclick="removeItem(${index})">Удалить</button>
-        </div>
-      </div>
-    </div>
-  `).join("");
-}
-
-function changeQuantity(index,delta) {
-  cart[index].quantity += delta;
-  if (cart[index].quantity<=0) cart.splice(index,1);
-  saveCart();
-  renderCart();
-}
-
-function removeItem(index) {
-  cart.splice(index,1);
-  saveCart();
-  renderCart();
-}
-
-function openCart() {
-  renderCart();
-  document.getElementById("cartOverlay").classList.add("show");
-}
-
-function closeCart() {
-  document.getElementById("cartOverlay").classList.remove("show");
-}
-
-/* TELEGRAM ORDER */
-
-function checkout() {
-  if (!cart.length) {
-    alert("Сначала добавь устройство в корзину.");
-    return;
-  }
-
-  let message = "Здравствуйте! Хочу оформить заказ в Apple Boom. ❤️\n\n";
-
-  cart.forEach((item,index)=>{
-    message +=
-      `${index+1}. ${item.name}\n`+
-      `Память / комплектация: ${item.memory}\n`+
-      `Цвет: ${item.color}\n`+
-      `Состояние: ${item.condition}\n`+
-      `Количество: ${item.quantity} шт.\n\n`;
-  });
-
-  message +=
-    "Прошу уточнить наличие, актуальную стоимость и условия доставки.\n\n"+
-    "Магазин: Apple Boom";
-
-  const telegramURL =
-    "https://t.me/"+TELEGRAM_USERNAME+"?text="+encodeURIComponent(message);
-
-  window.open(telegramURL,"_blank");
-
-  /*
-    Корзина намеренно не очищается автоматически.
-    Покупатель должен отправить сообщение в Telegram.
-  */
-}
-
-/* START */
-
-renderProducts();
-updateCartCount();
+renderCategories();
+render();
+el('favCount').textContent='0';
+el('cartCount').textContent='0';
 </script>
-
 </body>
 </html>
